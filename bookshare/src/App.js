@@ -3,11 +3,14 @@ import React from "react";
 import { Route } from 'react-router-dom';
 import Main from './MainPage/Main';
 import AuthMain from './AuthPage/AuthMain';
+import Nav from './Nav';
+
 function App() {
 	return (
 		<div className="App">
-			<Route exact path="/about" component={AuthMain} />
-			<Route path="/" component={Main} />
+			<Route exact path="/:id" component={Main} />
+			<Route exact path="/:id/:name" component={Nav}></Route>
+			<Route path="/about" component={AuthMain} />
 		</div>
 	);
 }
