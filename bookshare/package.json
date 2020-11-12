@@ -36,5 +36,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/register": "^7.12.1",
+    "eslint-config-standard": "^16.0.1"
   }
 }

@@ -1,4 +1,5 @@
-import './App.css';
+// import './App.css';
+import React from "react";
 import { Route } from 'react-router-dom';
 import Main from './MainPage/Main';
 import AuthMain from './AuthPage/AuthMain';
