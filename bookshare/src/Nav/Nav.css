@@ -1,0 +1,84 @@
+.modalWrapper {
+	width: 100%;
+	/* border: 1px solid blue; */
+	border-radius: 30px;
+}
+.userInfo {
+	/* border-bottom: 1px solid rgb(147, 147, 164); */
+	padding: 20% 0;
+	height: 15%;
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+	background-color: rgb(192, 211, 211);
+}
+.writingButton {
+	width: 70px;
+	height: 30px;
+	/* border-radius: 30px; */
+	margin: 0 30px 30px 0;
+	position: relative;
+	background-color: rgb(216, 202, 202);
+	color: rgb(154, 144, 144);
+	border-radius: 30px;
+	transform: translate(-270px, -100px);
+	border: 1px solid rgb(245, 245, 245);
+}
+.userEmail {
+	margin-right: 70px;
+	/* text-decoration: underline; */
+	font-weight: bold;
+	color: rgb(133, 143, 143);
+}
+.userInfoBtn {
+	border-radius: 7px;
+	border: 1px solid rgb(169, 169, 179);
+	font-size: 13px;
+	position: relative;
+	height: 30px;
+	color: rgb(147, 147, 123);
+	transform: translate(-5px, -4px);
+}
+.nav {
+	display: flex;
+	height: 200px;
+
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+.logout {
+	display: flex;
+	justify-content: flex-end;
+	border-radius: 30px;
+	background-color: rgb(221, 230, 230);
+	/* border: 1px solid blue; */
+	height: 45%;
+}
+.logoutBtn {
+	position: absolute;
+	bottom: 0;
+
+	transform: translate(-30px, -30px);
+}
+.logo {
+	background: url('../logo.png') no-repeat;
+	/* border: 1px solid blue; */
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	cursor: pointer;
+}
+.modal {
+	width: 300px;
+	height: 300px;
+	/* border: 1px solid blue; */
+	position: absolute;
+	transform: translate(-5px, 165px);
+	border-radius: 30px;
+	background-color: rgb(192, 211, 211);
+}
+.text {
+	border: 1px solid rgb(145, 145, 167);
+	width: auto;
+	height: 300px;
+}
