@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
 
+=======
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
+        
+>>>>>>> cb536b70cf72b516d168e682b7bd8dd4709e9c30
 axios.defaults.withCredentials = true;
 
 function Login({ history }) {
