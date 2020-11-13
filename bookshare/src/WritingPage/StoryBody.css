@@ -1,0 +1,14 @@
+.story-container {
+  width: 80%;
+}
+.story-title {
+  width: 100%;
+}
+
+.title-input {
+  position: relative;
+  width: auto;
+}
+.CKEditor {
+  width: 100%;
+}
