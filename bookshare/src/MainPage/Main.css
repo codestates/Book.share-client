@@ -1,14 +1,33 @@
+.storyChartWrapper {
+	/* border: 1px solid blue; */
+	display: flex;
+	justify-content: center;
+}
 .storyChart {
-	border: 1px solid rgb(212, 212, 223);
-	width: auto;
+	/* border: 1px solid rgb(212, 212, 223); */
+	width: 40%;
 	height: auto;
 }
 .chartList {
 	border: 1px solid rgb(138, 138, 151);
+	margin-bottom: 70px;
+	padding: 10px 0;
+	border-radius: 15px;
+	background-color: rgb(255, 255, 255);
+	opacity: 0.9;
+	transition: all 1s;
+	box-shadow: 40px 40px 5px rgb(115, 115, 120);
+}
+.chartList:hover {
+	transform: scale(1.1);
+
+	box-shadow: 3px 3px 3px rgb(96, 95, 94);
+	/* opacity: 0.6; */
 }
 .text {
 	text-align: center;
 	height: 300px;
+	margin-bottom: 100px;
 }
 a {
 	text-decoration: none;
@@ -22,4 +41,35 @@ a {
 	width: 200px;
 	height: 200px;
 	background: url('../Spinner-1s-200px.gif');
+}
+.storyChart_title {
+	/* border: 1px solid rgb(138, 138, 151); */
+	font-size: 25px;
+	padding: 0 10px;
+	margin-bottom: 10px;
+	color: rgb(67, 65, 62);
+}
+.storyChart_title:hover {
+	color: rgb(100, 96, 96);
+}
+.storyChart_body {
+	/* border: 1px solid rgb(138, 138, 151); */
+	border-top: 1px solid rgb(45, 45, 50);
+	font-size: 20px;
+	font-weight: 100;
+	padding: 10px;
+	height: 150px;
+	transition: all 1s;
+}
+.storyChart_body:hover {
+	font-size: 25px;
+
+	color: rgb(21, 13, 13);
+}
+.storyChart_username {
+	/* border: 1px solid rgb(138, 138, 151); */
+	padding: 0 10px;
+	font-size: 15px;
+	font-weight: 100;
+	color: rgb(70, 72, 74);
 }
