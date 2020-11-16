@@ -26,4 +26,4 @@ export default function Nav({ history, match }) {
 			</div>
 		</>
 	);
-}
+} 

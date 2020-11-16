@@ -5,9 +5,12 @@ import axios from 'axios';
 import StoryChart from './StoryChart';
 import UserInfo from '../UserInfo/UserInfo';
 import ReadingStory from '../ReadingPage/ReadingStory';
+import StoryBody from '../WritingPage/StoryBody';
 import { Route } from 'react-router-dom';
 import Text from './Text';
+import Footer from './Footer';
 export default function Main({ match }) {
+	console.log(match);
 	const [data, setData] = useState(null);
 	const [modalToggle, setModalToggle] = useState({ display: 'none' });
 	const modalToggleHandler = () => {
@@ -22,16 +25,17 @@ export default function Main({ match }) {
 	};
 
 	useEffect(() => {
-		axios.get('https://jsonplaceholder.typicode.com/comments/').then((res) => setData([...res.data.slice()]));
+		axios.get('https://jsonplaceholder.typicode.com/posts/').then((res) => setData([...res.data.slice(0, 5)]));
 	}, []);
 
 	if (match.url === '/main') {
 		return (
 			data && (
 				<div className="wrapper">
-					<Nav modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+					<Nav match={match} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
 					<Text userData={data} modalToggle={modalToggle} modalOff={modalOff} />
-					<StoryChart userData={data} match={match.params} />
+					<StoryChart userData={data} match={match.params} modalOff={modalOff} />
+					<Footer />
 				</div>
 			)
 		);
@@ -43,8 +47,25 @@ export default function Main({ match }) {
 				render={({ history }) => {
 					return (
 						<>
-							<Nav history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
+							<Nav match={match} history={history} modalOff={modalOff} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
 							<UserInfo modalOff={modalOff} userData={data} />
+							<Footer />
+						</>
+					);
+				}}
+			/>
+		);
+	} else if (match.url === '/write') {
+		return (
+			<Route
+				path="/write"
+				exact
+				render={({ history, match }) => {
+					console.log(match);
+					return (
+						<>
+							<Nav history={history} match={match} modalOff={modalOff} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
+							<StoryBody history={history} />
 						</>
 					);
 				}}
@@ -58,7 +79,7 @@ export default function Main({ match }) {
 				render={({ history }) => {
 					return (
 						<>
-							<Nav history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
+							<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
 							<ReadingStory userData={data} modalOff={modalOff} match={match} />
 						</>
 					);
