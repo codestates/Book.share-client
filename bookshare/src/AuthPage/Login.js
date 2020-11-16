@@ -1,21 +1,14 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-=======
-import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
-import axios from "axios";
-        
->>>>>>> cb536b70cf72b516d168e682b7bd8dd4709e9c30
 axios.defaults.withCredentials = true;
 
 function Login({ history }) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [emailError, setEmailError] = useState('');
-	const [passwordError, setPasswordError] = useState('비밀번호 필수입니다');
+	const [passwordError, setPasswordError] = useState('비밀번호 필수입니다'); 
 	// const onIdChange = (e) => {
 	//   setEmail(Object.assign({}, input, { email: e.target.value }))
 	// }
@@ -26,143 +19,59 @@ function Login({ history }) {
 
 	const emailValidation = (e) => {
 		setEmail(e.target.value);
-		if (!email.includes('@')) {
-			setEmailError('올바른 이메일을 입력하세요');
-		} else if (email === '') {
-			setEmailError('');
-		}
+		// if (/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/.test(email) !== true) {
+		// 	setEmailError('올바른 이메일을 입력하세요');
+		// } 
+		// setEmailError('');
 	};
 
 	const passwordValidation = (e) => {
 		setPassword(e.target.value);
-		if (password !== '') {
-			setPasswordError('');
-		}
+		// if (password !== '') {
+		// 	setPasswordError('');
+		// }
 	};
 	const onSubmit = (e) => {
 		e.preventDefault();
-		axios
-			.post('http://localhost:8080/user/login', {
-				email: email,
-				password: password,
-			})
-			.then((res) => {
-				history.push(`/${res.session}`);
-			})
-			.catch((res) => {
-				if (res.status === 404) {
-					setEmailError('올바른 이메일을 입력하세요');
-				}
-			});
+		if (/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/.test(email) !== true) {
+			setEmailError('올바른 이메일을 입력하세요');
+		} else if (password !== '') {
+			setPasswordError('비밀번호는 필수 입니다');
+		} else {
+			axios
+				.post('http://localhost:8080/user/login', {
+					email: email,
+					password: password,
+				})
+				.then((res) => {
+					history.push(`/${res.session}`);
+				})
+				.catch((res) => {
+					if (res.status === 409) {
+						alert("로그인에 실패하였습니다")
+					}
+				});
+		}
 		setEmail('');
 		setPassword('');
 	};
 	return (
 		<>
-			<form onSubmit={onSubmit}>
+			<section>
 				<div>
 					<p>ID:</p>
 					<input type="email" placeholder="이메일을 입력 해주세요" onChange={emailValidation} value={email}></input>
-					<div>{emailError !== '' ? emailError : ''}</div>
+					<div>{emailError}</div>
 				</div>
 				<div>
 					<p>PW:</p>
 					<input type="password" placeholder="비밀번호를 입력 해주세요" onChange={passwordValidation} value={password}></input>
 					<div>{passwordError}</div>
 				</div>
-				<button type="submit">로그인</button>
-			</form>
-			{/* <button>
-				<a
-					href={
-						'https://accounts.google.com/o/oauth2/v2/auth?client_id=515815962354-ao60eomieaq416as39nr7pkn12d9mn85.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F%3Aid&response_type=token&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcontacts.readonly'
-					}
-				>
-					google login
-				</a>
-			</button> */}
+				<button type="submit" onClick={onSubmit}>로그인</button>
+			</section>
 		</>
 	);
 }
-// class Login extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       email: "",
-//       password: "",
-//     };
-//     this.handleInputValue = this.handleInputValue.bind(this);
-//   }
-//   handleInputValue = (key) => (e) => {
-//     this.setState({ [key]: e.target.value });
-//   };
-
-//   // isEmail = (email) => {
-//   //   const emailRegex = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-
-//   //   return emailRegex.test(email);
-//   // };
-
-//   onTextValidation = () => {
-//     let emailError = "";
-
-//     if (!this.isEmail(this.state.email)) {
-//       emailError = "올바른 양식으로 입력 바랍니다";
-//     }
-//     if (emailError) {
-//       this.setState({ emailError });
-//       return false;
-//     }
-//     return true;
-//   };
-
-//   onSubmit=(e) => {
-//     e.preventDefault();
-//     const valid = this.onTextValidation();
-//     if (!valid) {
-//       console.log("fuck", this.state);
-//     } else {
-//       return axios
-//         .post("http://localhost:8080/user/login", {
-//           email: this.state.email,
-//           password: this.state.password,
-//         })
-//         .then((res) => {
-//           console.log(res)
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         });
-//     }
-//   }
-
-//   render() {
-// return (
-//     <>
-//       <form onSubmit={this, this.onSubmit}>
-//       <div>
-//         <p>ID:</p>
-//         <input
-//           type="email"
-//           placeholder="이메일을 입력 해주세요"
-//           onChange={this.handleInputValue("email")}
-//         ></input>
-//         </div>
-//       <div>
-//         <p>PW:</p>
-//         <input
-//           type="password"
-//           placeholder="비밀번호를 입력 해주세요"
-//           onChange={this.handleInputValue("password")}
-//         ></input>
-//       </div>
-//       <button type="submit">
-//         로그인
-//       </button>
-//     </form>
-//   </>
-//   );
-//   }
-// }
 
 export default withRouter(Login);
