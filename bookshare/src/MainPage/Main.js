@@ -25,7 +25,7 @@ export default function Main({ match }) {
 	};
 
 	useEffect(() => {
-		axios.get('https://jsonplaceholder.typicode.com/comments/').then((res) => setData([...res.data.slice(0, 5)]));
+		axios.get('https://jsonplaceholder.typicode.com/posts/').then((res) => setData([...res.data.slice(0, 5)]));
 	}, []);
 
 	if (match.url === '/main') {
