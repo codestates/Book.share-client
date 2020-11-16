@@ -5,7 +5,7 @@ import Main from './MainPage/Main';
 import AuthMain from './AuthPage/AuthMain';
 import Nav from './Nav/Nav';
 import UserInfo from './UserInfo/UserInfo';
-import WritingPage from './WritingPage/WritingPage'
+import WritingPage from './WritingPage/WritingPage';
 
 function App() {
 	return (
@@ -15,11 +15,10 @@ function App() {
 				<Route exact path="/main" component={Main} />
 				<Route path="/main/userInfo" component={Main} />
 				<Route path="/main/:id" component={Main} />
-				<Route path="/write" component={WritingPage} />
+				<Route path="/write" component={Main} />
 			</Switch>
 		</div>
 	);
 }
 
 export default App;
- 
