@@ -17,12 +17,12 @@ export default function Nav({ history, match, modalToggle, modalToggleHandler, m
 			<div className="logo" onClick={historyHandler}></div>
 			<div className="nav">
 				{match.url !== '/write' && (
-					<button className="writingButton" onClick={modalOff}>
+					<button className="modalEventButton" onClick={modalOff}>
 						<Link to={'/write'}>글쓰기</Link>
 					</button>
 				)}
 
-				<button className="writingButton" onClick={modalToggleHandler}>
+				<button className="modalEventButton" onClick={modalToggleHandler}>
 					modal
 				</button>
 
