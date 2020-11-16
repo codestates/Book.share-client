@@ -1,200 +1,156 @@
-import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
-import axios from "axios";
-        
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
+import SucessModal from './SucessModal';
+import FailureModal from './FailureModal';
+import "./AuthMain.css"
+
 axios.defaults.withCredentials = true;
-        
+
 function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("비밀번호 필수입니다");
-  const [usernameError, setUsernameError] = useState("");
- 
-  const emailValidation = (e) => {
-    setEmail(e.target.value)
-    if(!email.includes("@")) {
-      setEmailError("올바른 이메일을 입력해 주세요")
-    } else if(email === "") {
-      setEmailError("")
-    }
-  }
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [recheckPassword, setRecheckPassword] = useState('');
+	const [username, setUsername] = useState('');
+	const [emailError, setEmailError] = useState('');
+	const [passwordError, setPasswordError] = useState('비밀번호 필수입니다');
+	const [recheckPasswordError, setRecheckPasswordError] = useState('비밀번호 필수입니다');
+	const [usernameError, setUsernameError] = useState('');
+	const [sucessModalState, setSucessModalState] = useState(false)
+	const [failureModalState, setFailureModalState] = useState(false)
 
-  const usernameValidation = (e) => {
-    setUsername(e.target.value)
-    if(!email.includes("@")) {
-      setUsernameError("이름 형식에 맞게 입력하세요")
-    } else if(email === "") {
-      setUsernameError("")
-    }
-  }
+	const emailValidation = (e) => {
+		setEmail(e.target.value); 
+	};
 
-  const passwordValidation = (e) => {
-    setPassword(e.target.value)
-    if(password !== '') {
-      setPasswordError("")
-    } 
-  }
-  const onSubmit = (e) => {
-      e.preventDefault();
-      axios
-        .post("http://localhost:8080/user/signup", {
-          email: email,
-          username: username,
-          password: password,
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            console.log(res)
-          }
-        })
-        .catch((res) => {
-          if (res.status === 404) {
-            setEmailError("올바른 이메일을 입력하세요")
-          }
-        });
-    setEmail("")
-    setPassword("")
-    setUsername("")
-  }
-  return (
-    <>
-      <form onSubmit={onSubmit}>
-      <div>
-        <p>username:</p>
-        <input
-          type="username"
-          placeholder="이름을 입력해주세요"
-            onChange={usernameValidation}
-            value={username}
-          ></input>
-          <div>{usernameError}</div>
-        </div>
-      <div>
-        <p>email:</p>
-        <input
-          type="email"
-          placeholder="이메일을 입력 해주세요"
-            onChange={emailValidation}
-            value={email}
-          ></input>
-          <div>{emailError }</div>
-        </div>
-        <div>
-        <p>password:</p>
-        <input
-          type="password"
-          placeholder="비밀번호를 입력 해주세요"
-            onChange={passwordValidation}
-            value={password}
-          ></input>
-          <div>{passwordError }</div>
-        </div>
-      <button type="submit">
-        회원가입
-      </button>
-    </form>
-  </>
-  );
+	const usernameValidation = (e) => {
+		setUsername(e.target.value);
+		console.log(e.target.value)
+	};
 
+	const passwordValidation = (e) => {
+		setPassword(e.target.value);
+		if ((/[^A-Za-z0-9]/gi).test(password) !== true) {
+			setPasswordError('비밀번호는 특수문자를 포함하여야 합니다');
+		} else {
+			setPasswordError("")
+		}
+	};
+
+	const passwordReValidation = (e) => {
+		setRecheckPassword(e.target.value);
+		if (password !== recheckPassword) {
+			setRecheckPasswordError('비밀번호가 일치하지 않습니다');
+		} else if (password === recheckPassword) {
+			setRecheckPasswordError(() => "")
+		}
+	};
+
+	const onUserNameSubmit = (e) => {
+		e.preventDefault();
+		if (/^[A-Za-z0-9]{4,10}$/.test(username) !== true) {
+			setUsernameError("username은 영문 4글자 이상 10글자 이하입니다")
+		} else {
+			axios
+				.post('http://localhost:8080/user/signup', {
+					username: username
+				})
+				.then((res) => {
+					if (res.status === 201) {
+						console.log(res);
+						//모달을 띄운다
+						setSucessModalState(true)
+					}
+				})
+				.catch((res) => {
+					if (res.status === 409) {
+						//모달을 띄운다
+						setFailureModalState(true)
+					}
+				});
+		}
+	};
+
+	const onEmailSubmit = (e) => {
+		e.preventDefault();
+		if (/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/.test(email) !== true) {
+			setEmailError('올바른 이메일을 입력하세요');
+		}  else {
+			axios
+				.post('http://localhost:8080/user/signup', {
+					email: email
+				})
+				.then((res) => {
+					if (res.status === 201) {
+						console.log(res);
+						//모달을 띄운다
+						setSucessModalState(true)
+					}
+				})
+				.catch((res) => {
+					if (res.status === 409) {
+						//모달을 띄운다
+						setFailureModalState(true)
+					}
+				});
+		}
+	};
+
+	const onSubmit = (e) => {
+		if (email && username && password && recheckPassword && sucessModalState && password === recheckPassword) {
+			e.preventDefault();
+			axios
+				.post('http://localhost:8080/user/signup', {
+					email: email,
+					username: username,
+					password: password,
+				})
+				.then((res) => {
+					if (res.status === 201) {
+						console.log(res);
+					}
+				})
+				.catch((err) => {
+					console.log(err)
+				});
+		} else {
+			alert("입력값을 확인하세요")
+		}
+		setEmail('');
+		setPassword('');
+		setUsername('');
+	};
+	return (
+		<>
+			<section>
+				<div className="signup-user">
+					<p>username:</p>
+					<input type="username" placeholder="이름을 입력해주세요" onChange={usernameValidation} value={username}></input>
+					<div>{usernameError}</div>
+					<button type="submit" onClick={onUserNameSubmit}>중복확인</button>
+				</div>
+				<div className="signup-email">
+					<p>email:</p>
+					<input type="email" placeholder="이메일을 입력 해주세요" onChange={emailValidation} value={email}></input>
+					<div>{emailError}</div>
+					<button type="submit" onClick={onEmailSubmit}>중복확인</button>
+				</div>
+				<div className="signup-password">
+					<p>password:</p>
+					<input type="password" placeholder="비밀번호를 입력 해주세요" onChange={passwordValidation} value={password}></input>
+					<div>{passwordError}</div>
+				</div>
+				<div className="signup-pw-recheck">
+					<p>password 재확인:</p>
+					<input type="password" placeholder="비밀번호를 입력 해주세요" onChange={passwordReValidation} value={recheckPassword}></input>
+					<div>{recheckPasswordError}</div>
+				</div>
+				<button type="submit" onClick={onSubmit}>회원가입</button>
+			</section>
+			<SucessModal sucessModalState={sucessModalState} />
+			<FailureModal failureModalState={failureModalState} />
+		</>
+	);
 }
-
-
-
-// class Signup extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       email: "",
-//       username: "",
-//       password: "",
-//       errorMessage: ""
-//     };
-//     this.handleInputValue = this.handleInputValue.bind(this);
-//     this.handleSignup = this.handleSignup.bind(this);
-//     console.log(this.state)
-//   }
-
-//   handleInputValue = (key) => (e) => {
-//     this.setState({ [key]: e.target.value });
-//     // console.log(key)
-//   };
-
-//   handleSignup = () => {
-//     if (this.state.email !== "" && this.state.password  !== "" && this.state.username  !== "") {
-//       console.log(this.state.email)
-//       axios({
-//         method: 'post',
-//         url: 'http://localhost:4000/signup',
-//         data: {
-//           email: this.state.email,
-//           password: this.state.password,
-//           username: this.state.username,
-//         },
-//         headers: {
-//           'Content-Type': 'application/json',
-//         }
-//       })
-//       .then((res) => {
-//         console.log(res);
-//       })
-//         .then(() => {
-//           this.props.history.push("/login");
-//         })
-//         .catch(e => {
-//           console.log(e.toString())
-//         })
-//     } else {
-//       console.log("오류야 떠라")
-//       this.setState({
-//         errorMessage: "모든 항목은 필수입니다"
-//       })
-//       console.log(this.state.errorMessage)
-//     }
-//   }
-
-//     render() {
-//       return (
-//         <div>
-//           <center>
-//             <h1>Sign Up</h1>
-//             <form onSubmit={(e) => e.preventDefault()}>
-//             <div>
-//                 <span>이름</span>
-//                 <input
-//                   type="username"
-//                   onChange={this.handleInputValue("email")}
-//                 ></input>
-//               </div>
-//               <div>
-//                 <span>이메일</span>
-//                 <input
-//                   type="email"
-//                   onChange={this.handleInputValue("email")}
-//                 ></input>
-//               </div>
-//               <div>
-//                 <span>비밀번호</span>
-//                 <input
-//                   type="password"
-//                   onChange={this.handleInputValue("password")}
-//                 ></input>
-//               </div>
-//               <button
-//                 className="btn btn-signup"
-//                 type='submit'
-//                 onClick={this.handleSignup}
-//               >
-//                 회원가입
-//             </button>
-//             {this.state.errorMessage === "" ? <></> :
-//                   <div className="alert-box">{this.state.errorMessage}</div>}
-//             </form>
-//           </center>
-//         </div>
-//       ); 
-//   }
-// }
 
 export default withRouter(Signup);
