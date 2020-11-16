@@ -24,6 +24,10 @@
 	transform: translate(-270px, -100px);
 	border: 1px solid rgb(245, 245, 245);
 }
+.writingButton a {
+	/* border: 1px solid blue; */
+	color: rgb(154, 144, 144);
+}
 .userEmail {
 	margin-right: 70px;
 	/* text-decoration: underline; */
@@ -76,6 +80,7 @@
 	transform: translate(-5px, 165px);
 	border-radius: 30px;
 	background-color: rgb(192, 211, 211);
+	z-index: 9999;
 }
 .text {
 	border: 1px solid rgb(145, 145, 167);
