@@ -3,9 +3,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Main from './MainPage/Main';
 import AuthMain from './AuthPage/AuthMain';
-import Nav from './Nav/Nav';
-import UserInfo from './UserInfo/UserInfo';
-import WritingPage from './WritingPage/WritingPage';
 
 function App() {
 	return (

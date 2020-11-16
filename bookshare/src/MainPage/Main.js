@@ -34,7 +34,7 @@ export default function Main({ match }) {
 				<div className="wrapper">
 					<Nav match={match} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
 					<Text userData={data} modalToggle={modalToggle} modalOff={modalOff} />
-					<StoryChart userData={data} match={match.params} />
+					<StoryChart userData={data} match={match.params} modalOff={modalOff} />
 					<Footer />
 				</div>
 			)
@@ -47,7 +47,7 @@ export default function Main({ match }) {
 				render={({ history }) => {
 					return (
 						<>
-							<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
+							<Nav match={match} history={history} modalOff={modalOff} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
 							<UserInfo modalOff={modalOff} userData={data} />
 							<Footer />
 						</>
@@ -64,7 +64,7 @@ export default function Main({ match }) {
 					console.log(match);
 					return (
 						<>
-							<Nav history={history} match={match} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
+							<Nav history={history} match={match} modalOff={modalOff} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
 							<StoryBody history={history} />
 						</>
 					);
@@ -79,7 +79,7 @@ export default function Main({ match }) {
 				render={({ history }) => {
 					return (
 						<>
-							<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
+							<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
 							<ReadingStory userData={data} modalOff={modalOff} match={match} />
 						</>
 					);
