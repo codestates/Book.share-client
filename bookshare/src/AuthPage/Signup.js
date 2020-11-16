@@ -15,7 +15,7 @@ function Signup() {
 	const [emailError, setEmailError] = useState('');
 	const [passwordError, setPasswordError] = useState('비밀번호 필수입니다');
 	const [recheckPasswordError, setRecheckPasswordError] = useState('비밀번호 필수입니다');
-	const [usernameError, setUsernameError] = useState('');
+	// const [usernameError, setUsernameError] = useState('');
 	const [sucessModalState, setSucessModalState] = useState(false)
 	const [failureModalState, setFailureModalState] = useState(false)
 
@@ -46,30 +46,30 @@ function Signup() {
 		}
 	};
 
-	const onUserNameSubmit = (e) => {
-		e.preventDefault();
-		if (/^[A-Za-z0-9]{4,10}$/.test(username) !== true) {
-			setUsernameError("username은 영문 4글자 이상 10글자 이하입니다")
-		} else {
-			axios
-				.post('http://localhost:8080/user/signup', {
-					username: username
-				})
-				.then((res) => {
-					if (res.status === 201) {
-						console.log(res);
-						//모달을 띄운다
-						setSucessModalState(true)
-					}
-				})
-				.catch((res) => {
-					if (res.status === 409) {
-						//모달을 띄운다
-						setFailureModalState(true)
-					}
-				});
-		}
-	};
+	// const onUserNameSubmit = (e) => {
+	// 	e.preventDefault();
+	// 	if (/^[A-Za-z0-9]{4,10}$/.test(username) !== true) {
+	// 		setUsernameError("username은 영문 4글자 이상 10글자 이하입니다")
+	// 	} else {
+	// 		axios
+	// 			.post('http://localhost:8080/user/signup', {
+	// 				username: username
+	// 			})
+	// 			.then((res) => {
+	// 				if (res.status === 201) {
+	// 					console.log(res);
+	// 					//모달을 띄운다
+	// 					setSucessModalState(true)
+	// 				}
+	// 			})
+	// 			.catch((res) => {
+	// 				if (res.status === 409) {
+	// 					//모달을 띄운다
+	// 					setFailureModalState(true)
+	// 				}
+	// 			});
+	// 	}
+	// };
 
 	const onEmailSubmit = (e) => {
 		e.preventDefault();
@@ -126,8 +126,8 @@ function Signup() {
 				<div className="signup-user">
 					<p>username:</p>
 					<input type="username" placeholder="이름을 입력해주세요" onChange={usernameValidation} value={username}></input>
-					<div>{usernameError}</div>
-					<button type="submit" onClick={onUserNameSubmit}>중복확인</button>
+					{/* <div>{usernameError}</div> */}
+					{/* <button type="submit" onClick={onUserNameSubmit}>중복확인</button> */}
 				</div>
 				<div className="signup-email">
 					<p>email:</p>
