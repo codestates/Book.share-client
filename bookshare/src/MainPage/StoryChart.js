@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-export default function StoryChart({ match, userData }) {
+export default function StoryChart({ match, userData, modalOff }) {
 	return (
 		<>
 			<div className="storyChart">
 				{userData.map((data) => {
 					return (
 						<Link to={`/main/${data.id}`} key={data.id}>
-							<div className="chartList" key={data.id}>
+							<div className="chartList" onClick={modalOff} key={data.id}>
 								{
 									<>
 										<div className="name">id:{data.name}</div>

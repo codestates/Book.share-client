@@ -14,7 +14,7 @@ export default function UserInfo({ history, match, modalOff }) {
 	});
 
 	useEffect(() => {
-		axios.get('https://jsonplaceholder.typicode.com/users/1').then((res) => {
+		axios.get('https://jsonplaceholder.typicode.com/users/3').then((res) => {
 			//'http://localhost:8080/user/info'
 			const { data } = res;
 			console.log(data);

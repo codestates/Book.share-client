@@ -18,7 +18,7 @@ export default function WritingPage({history}) {
   const handleTitleChange = (e) => {
     e.preventDefault()
     setTitle(e.target.value);
-    console.log(title)
+    console.log(title) 
   }
 
   const handleCancleClick = e => {
