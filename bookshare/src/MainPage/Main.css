@@ -14,3 +14,12 @@ a {
 	text-decoration: none;
 	color: black;
 }
+.loading {
+	/* border: 1px solid blue; */
+	position: absolute;
+	left: 50%;
+	transform: translate(-100px, 250px);
+	width: 200px;
+	height: 200px;
+	background: url('../Spinner-1s-200px.gif');
+}

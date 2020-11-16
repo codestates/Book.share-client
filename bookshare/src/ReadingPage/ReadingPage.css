@@ -1,0 +1,35 @@
+.readingPageWrapper {
+	width: 100%;
+}
+.textHeader {
+	width: 100%;
+	border: 1px solid blue;
+	margin-bottom: 50px;
+	display: flex;
+	text-align: center;
+}
+.title {
+	margin-left: 30px;
+}
+.date {
+	margin-left: 30px;
+}
+.textBody {
+	width: 100%;
+	border: 1px solid blue;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.commnetWrapper {
+	width: 100%;
+	border: 1px solid blue;
+	text-align: center;
+}
+.textTag {
+	border: 1px solid black;
+	text-align: center;
+}
+.showtext {
+	text-align: start;
+}

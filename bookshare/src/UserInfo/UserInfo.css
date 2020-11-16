@@ -11,16 +11,20 @@
 	text-align: center;
 	/* border: 1px solid rgb(217, 217, 227); */
 }
-.modifyId {
-	height: 100px;
-	border: 1px solid rgb(14, 14, 16);
-}
-.modifyPw {
-	height: 100px;
-	border: 1px solid rgb(70, 70, 156);
-}
+
 .leaveMember {
 	/* margin-top: 205px; */
 	height: 100px;
 	/* border: 1px solid rgb(74, 74, 80); */
+}
+.infoData {
+	display: flex;
+	height: 100px;
+	border: 1px solid rgb(70, 70, 156);
+	justify-content: center;
+	align-items: center;
+}
+.seenText {
+	position: relative;
+	margin: 0 80px 0 10px;
 }

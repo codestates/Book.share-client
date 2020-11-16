@@ -13,6 +13,7 @@ function App() {
 				<Route exact path="/" component={AuthMain} />
 				<Route exact path="/main" component={Main} />
 				<Route path="/main/userInfo" component={Main} />
+				<Route path="/main/:id" component={Main} />
 			</Switch>
 		</div>
 	);
