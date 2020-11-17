@@ -5,7 +5,7 @@ import axios from 'axios';
 import StoryChart from './StoryChart';
 import UserInfo from '../UserInfo/UserInfo';
 import ReadingStory from '../ReadingPage/ReadingStory';
-import StoryBody from '../WritingPage/StoryBody';
+import WritingPage from '../WritingPage/WritingPage';
 import { Route } from 'react-router-dom';
 import Text from './Text';
 import Footer from './Footer';
@@ -25,22 +25,17 @@ export default function Main({ history, match, session }) {
 	};
 
 	useEffect(() => {
-		if (session) {
-			axios.get('https://jsonplaceholder.typicode.com/posts/').then((res) => setData([...res.data.slice(0, 5)]));
-		}
+		axios.get('http://localhost:8080/post/lists').then((res) => setData(res.data.posts));
 	}, []);
-
 	if (data) {
 		if (match.url === '/main') {
 			return (
-				data && (
-					<div className="wrapper">
-						<Nav match={match} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
-						<Text userData={data} modalToggle={modalToggle} modalOff={modalOff} />
-						<StoryChart userData={data} match={match.params} modalOff={modalOff} />
-						<Footer />
-					</div>
-				)
+				<div className="wrapper">
+					<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+					<Text userData={data} modalToggle={modalToggle} modalOff={modalOff} />
+					<StoryChart userData={data} match={match.params} modalOff={modalOff} />
+					<Footer />
+				</div>
 			);
 		} else if (match.url === '/main/userInfo') {
 			return (
@@ -64,11 +59,10 @@ export default function Main({ history, match, session }) {
 					path="/write"
 					exact
 					render={({ history, match }) => {
-						console.log(match);
 						return (
 							<>
-								<Nav history={history} match={match} modalOff={modalOff} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
-								<StoryBody history={history} />
+								<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+								<WritingPage history={history} />
 							</>
 						);
 					}}
@@ -92,8 +86,12 @@ export default function Main({ history, match, session }) {
 		} else if (Array.isArray(data) && Number(match.params.id) > data.length + 1) {
 			return <div className="loading"></div>;
 		}
-		return <div className="loading"></div>;
 	}
 
-	return <div className="loading"></div>;
+	return (
+		<>
+			<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+			<div className="loading"></div>;
+		</>
+	);
 }

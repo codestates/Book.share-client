@@ -1,10 +1,9 @@
-
-import React,{useState} from "react";
-import { withRouter, Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera } from "@fortawesome/free-solid-svg-icons"
+import React, { useState } from 'react';
+import { withRouter, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
 // import { GoogleLogin } from "react-google-login";
-import './SocialLogin.css'
+import './SocialLogin.css';
 // import axios from "axios";
 
 function SocialLogin({ history }) {
@@ -23,10 +22,9 @@ function SocialLogin({ history }) {
 	//   const responseFail = (err) => {
 	//     console.log(err)
 	//   }
-  return (
-    <section className="soci-box">
-      <div>
-//         <a href="https://github.com/login/oauth/authorize?client_id=beacbf44735ab93f03c0&redirect_uri=http://1838bee4edee.ngrok.io/callback">
+	return (
+		<section className="soci-box">
+			{/* //         <a href="https://github.com/login/oauth/authorize?client_id=beacbf44735ab93f03c0&redirect_uri=http://1838bee4edee.ngrok.io/callback">
 
 //           <button type="button" className="git-btn">
 //           <FontAwesomeIcon icon={faCamera} />
@@ -47,8 +45,9 @@ function SocialLogin({ history }) {
 //         >
 //       </GoogleLogin>
       </div>
-    </section>
-  )
+    </section> */}
+		</section>
+	);
 }
 
 export default withRouter(SocialLogin);
