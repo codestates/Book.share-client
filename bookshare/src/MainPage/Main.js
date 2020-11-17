@@ -13,6 +13,7 @@ import Footer from './Footer';
 export default function Main({ history, match, session }) {
 	const [data, setData] = useState(null);
 	const [modalToggle, setModalToggle] = useState({ display: 'none' });
+	const [count, setCount] = useState(0);
 	const modalToggleHandler = () => {
 		if (modalToggle.display === 'none') {
 			setModalToggle({ display: 'flex' });
@@ -20,13 +21,21 @@ export default function Main({ history, match, session }) {
 			setModalToggle({ display: 'none' });
 		}
 	};
+	const countIncrease = () => {
+		setCount(count + 1);
+	};
 	const modalOff = () => {
 		setModalToggle({ display: 'none' });
 	};
-
+	console.log(count);
 	useEffect(() => {
 		axios.get('http://localhost:8080/post/lists').then((res) => setData(res.data.posts));
-	}, []);
+		if (data) {
+			console.log(data);
+			setCount(data.length);
+		}
+	}, [count]);
+
 	if (data) {
 		if (match.url === '/main') {
 			return (
@@ -62,7 +71,7 @@ export default function Main({ history, match, session }) {
 						return (
 							<>
 								<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
-								<WritingPage history={history} />
+								<WritingPage count={count} countIncrease={countIncrease} history={history} />
 							</>
 						);
 					}}
