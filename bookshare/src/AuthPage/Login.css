@@ -1,0 +1,73 @@
+.box-sign {
+  position: relative;
+  margin: 15px 0 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 350px;
+  height: 110px;
+}
+
+.box-input {
+  width: 100%;
+  height: 50px;
+  margin: 0;
+}
+
+.sign-txt {
+  font-family: "Noto Sans DemiLight", "Malgun Gothic";
+  border: none;
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 0;
+}
+
+.line-or {
+  top: 15%;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.line-or:before,
+.line-or:after {
+  display: inline-block;
+  width: calc(50% - 20px);
+  height: 1px;
+  margin: 8px 0;
+  background-color: rgba(0, 0, 0, 0.226);
+  vertical-align: top;
+  content: "";
+}
+
+.txt-or {
+  display: inline-block;
+  width: 40px;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.363);
+}
+
+.btn-sign {
+  position: relative;
+  top: 15%;
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+}
+
+.btn-sign:hover {
+  border-color: rgba(199, 189, 174, 0.836);
+  color: rgb(141, 138, 138);
+}

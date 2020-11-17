@@ -1,4 +1,118 @@
 .signup-user {
   position: relative;
   float: left;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+}
+
+.signup-txt {
+  font-family: "Noto Sans DemiLight", "Malgun Gothic";
+  border: none;
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 0;
+}
+
+.signup-email {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+}
+
+.signup-txt-email {
+  font-family: "Noto Sans DemiLight", "Malgun Gothic";
+  border: none;
+  display: block;
+  width: 280px;
+  height: 50px;
+  padding: 0;
+}
+
+.recheck-btn {
+  position: relative;
+  width: 65px;
+  height: 50px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.signup-inp {
+  margin: 5px 0 5px 0;
+}
+.err-txt {
+  font-size: 10%;
+  color: red;
+}
+
+.signup-box {
+  position: relative;
+  justify-content: center;
+  left: 1%;
+  top: 15%;
+}
+
+.inp-signup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 350px;
+  height: 210px;
+}
+
+.line-or-signup {
+  top: 15%;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  left: 6%;
+}
+.txt-or-signup {
+  display: inline-block;
+  width: 150px;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.363);
+}
+
+.line-or-signup:before,
+.line-or-signup:after {
+  display: inline-block;
+  width: calc(29% - 20px);
+  height: 1px;
+  margin: 8px 0;
+  background-color: rgba(0, 0, 0, 0.226);
+  vertical-align: top;
+  content: "";
+}
+
+.signup-btn {
+  position: relative;
+  top: 12%;
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  border-color: rgba(199, 189, 174, 0.836);
+  color: rgb(141, 138, 138);
 }
