@@ -2,13 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-export default function Modal({ history, match, modalOff }) {
+export default function Modal({ match, modalOff }) {
 	const [userEmail, setUserEmail] = useState('');
 	useEffect(() => {
-		axios
-			.get('https://jsonplaceholder.typicode.com/users/1')
-			.then((res) => res.data)
-			.then((res) => setUserEmail(res.email));
+		axios.get(`http://localhost:8080/user/info`).then((res) => setUserEmail(res.data.email));
 	}, []);
 
 	const logoutHandler = async () => {
