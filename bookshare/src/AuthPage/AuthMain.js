@@ -3,12 +3,12 @@ import Login from './Login';
 import Signup from './Signup';
 import SocialLogin from './SocialLogin';
 
-export default function AuthMain() {
+export default function AuthMain({ session, sessionHandler }) {
 	return (
 		<main id="auth-main">
-			<Login />
+			<Login session={session} sessionHandler={sessionHandler} />
 			<Signup />
-			<SocialLogin /> 
+			{/* <SocialLogin /> */}
 		</main>
 	);
 }
