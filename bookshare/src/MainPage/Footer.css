@@ -1,64 +1,68 @@
 ul {
-	padding: 11px 0 0;
-	list-style: none;
+  padding: 5px 0 5px 15px;
+  margin: 5px 0 0;
+  list-style: none;
 }
 
 .footer-container {
-	position: relative;
-	bottom: 0;
-	width: 100%;
-	margin-top: 50px;
-	border-top: 1px solid #f0f0f0;
-	text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 50px;
+  border-top: 1px solid #f0f0f0;
+  text-align: center;
 }
 
 .inner-foot {
-	overflow: hidden;
-	min-width: 1200px;
-	margin: 0 auto;
-	padding: 0 0 51px;
-	background-color: #fff;
+  overflow: hidden;
+  min-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0 51px;
+  background-color: black;
 }
 
 .content-bookshare {
-	float: left;
-	padding: 50px 0 0 55px;
+  float: left;
+  padding: 50px 0 0 55px;
 }
 
 .name-maker {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .title-footer {
-	font-weight: bold;
-	font-size: 25px;
-	text-align: left;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: left;
+  color: white;
 }
 
 .desc-footer {
-	color: #909090;
-	font-size: 15px;
-	line-height: 1.5;
-	padding: 10px 0 0;
-	text-align: left;
+  color: #909090;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 10px 0 0;
+  text-align: left;
 }
 
 .info-maker {
-	float: right;
-	width: 736px;
-	padding: 55px 60px 0 0;
-	text-align: left;
+  float: right;
+  width: 736px;
+  padding: 75px 60px 0 0;
+  text-align: left;
+  color: white;
 }
 
 .click-makerInfo {
-	float: left;
-	width: 160px;
-	padding-left: 24px;
+  float: left;
+  width: 160px;
+  padding-left: 24px;
+  color: white;
 }
 
 .link-txt {
-	display: block;
-	font-size: 16px;
-	color: #777;
-	line-height: 30px;
+  display: block;
+  font-size: 16px;
+  color: white;
+  line-height: 30px;
 }

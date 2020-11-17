@@ -2,7 +2,8 @@ import React,{useState} from "react";
 import { withRouter, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons"
-import {GoogleLogin} from "react-google-login";
+import { GoogleLogin } from "react-google-login";
+import './SocialLogin.css'
 // import axios from "axios";
 
 
@@ -24,16 +25,18 @@ function SocialLogin({history}) {
   } 
 
   return (
-    <>
+    <section className="soci-box">
       <div>
-        <Link to="https://github.com/login/oauth/authorize?client_id=beacbf44735ab93f03c0&redirect_uri=http://1838bee4edee.ngrok.io/callback">
+        <a href="https://github.com/login/oauth/authorize?client_id=beacbf44735ab93f03c0&redirect_uri=http://1838bee4edee.ngrok.io/callback">
           <button type="button" className="git-btn">
           <FontAwesomeIcon icon={faCamera} />
             Github Login
           </button>
-        </Link>
+        </a>
       </div>
       <div>
+        &nbsp;
+        &nbsp;
       <GoogleLogin
         clientId={process.env.REACT_APP_Google}
         buttonText="Google Sign in"
@@ -44,7 +47,7 @@ function SocialLogin({history}) {
         >
       </GoogleLogin>
       </div>
-    </>
+    </section>
   )
 }
 
