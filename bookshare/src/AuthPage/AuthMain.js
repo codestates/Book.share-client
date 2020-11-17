@@ -6,7 +6,7 @@ import './AuthMain.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons"
 
-export default function AuthMain() {
+export default function AuthMain({ session, sessionHandler }) {
 	return (
 		<main id="auth-main">
 			<article className="intro-bookshare">
@@ -23,8 +23,8 @@ export default function AuthMain() {
 			</article>
 			<section className="sign-bookshare">
 				<p className="tit-sign">Book.share</p>
-			  <Login />
-			  <SocialLogin />
+			  <Login session={session} sessionHandler={sessionHandler} />
+// 			  <SocialLogin />
 				<Signup />
 			</section>
 			<div className="bg-img"></div>
