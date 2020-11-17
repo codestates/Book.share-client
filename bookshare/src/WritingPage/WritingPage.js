@@ -9,7 +9,6 @@ export default function WritingPage({history}) {
   const [title, setTitle] = useState("");
   
 	const handleStoryChange = (event, editor ) => {
-		
 		const data = editor.getData();
 		setData(data)
 		console.log(data);
@@ -21,12 +20,11 @@ export default function WritingPage({history}) {
     console.log(title) 
   }
 
-  const handleCancleClick = e => {
+  const handleCancleClick = (e) => {
     e.preventDefault();
     history.goBack('/main')
   }
-  const handleSubmitClick = e => {
-    e.preventDefault();
+  const handleSubmitClick = () => {
     axios
       .post('http://localhost:8080/post/push', {
         title: title,
