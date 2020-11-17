@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
 export default function FailureModal(props) {
-const {failureModalState} = props
-  if (failureModalState) {
-    return (
-      <div id="myModal" className="modal">
-        <div className="modal-content">
-          <span className="close">&times;</span>
-          <p>이미 사용중이니 다른걸로 입력하시기 바랍니다</p>
-        </div>
-      </div>
-    )
-  } else { 
-    return null
-  }
- }
+	const { failureModalState } = props;
+	if (failureModalState) {
+		return (
+			<div id="myModal" className="authModal">
+				<div className="modal-content">
+					<span className="close">&times;</span>
+					<p>사용중인 이메일 입니다.</p>
+				</div>
+			</div>
+		);
+	} else {
+		return null;
+	}
+}

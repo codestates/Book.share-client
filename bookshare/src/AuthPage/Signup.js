@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import SucessModal from './SucessModal';
 import FailureModal from './FailureModal';
-import "./AuthMain.css"
+import './Signup.css'
 
 axios.defaults.withCredentials = true;
 
@@ -13,139 +13,135 @@ function Signup() {
 	const [recheckPassword, setRecheckPassword] = useState('');
 	const [username, setUsername] = useState('');
 	const [emailError, setEmailError] = useState('');
-	const [passwordError, setPasswordError] = useState('비밀번호 필수입니다');
-	const [recheckPasswordError, setRecheckPasswordError] = useState('비밀번호 필수입니다');
-	const [usernameError, setUsernameError] = useState('');
-	const [sucessModalState, setSucessModalState] = useState(false)
-	const [failureModalState, setFailureModalState] = useState(false)
-
-	const emailValidation = (e) => {
-		setEmail(e.target.value); 
-	};
+	const [passwordError, setPasswordError] = useState('');
+	const [recheckPasswordError, setRecheckPasswordError] = useState('');
+	const [sucessModalState, setSucessModalState] = useState(false);
+	const [failureModalState, setFailureModalState] = useState(false);
 
 	const usernameValidation = (e) => {
 		setUsername(e.target.value);
-		console.log(e.target.value)
+		console.log(e.target.value);
 	};
 
-	const passwordValidation = (e) => {
-		setPassword(e.target.value);
-		if ((/[^A-Za-z0-9]/gi).test(password) !== true) {
-			setPasswordError('비밀번호는 특수문자를 포함하여야 합니다');
+	useEffect(() => {
+		if (email === '') {
+			setEmailError(() => '')
+		} else if (/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/.test(email) !== true) {
+			setEmailError('올바른 이메일을 입력해주세요');
 		} else {
-			setPasswordError("")
+			setEmailError(() => '');
 		}
-	};
-
-	const passwordReValidation = (e) => {
-		setRecheckPassword(e.target.value);
-		if (password !== recheckPassword) {
-			setRecheckPasswordError('비밀번호가 일치하지 않습니다');
-		} else if (password === recheckPassword) {
-			setRecheckPasswordError(() => "")
-		}
-	};
-
-	const onUserNameSubmit = (e) => {
-		e.preventDefault();
-		if (/^[A-Za-z0-9]{4,10}$/.test(username) !== true) {
-			setUsernameError("username은 영문 4글자 이상 10글자 이하입니다")
+	}, [email])
+	
+	useEffect(() => {
+		if (password === '') {
+			setPasswordError(() => '')
+		} else if (/(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/.test(password) !== true) {
+			setPasswordError('비밀번호는 숫자, 영문, 특수문자를 포함한 8자 이상이어야 합니다');
 		} else {
-			axios
-				.post('http://localhost:8080/user/signup', {
-					username: username
-				})
-				.then((res) => {
-					if (res.status === 201) {
-						console.log(res);
-						//모달을 띄운다
-						setSucessModalState(true)
-					}
-				})
-				.catch((res) => {
-					if (res.status === 409) {
-						//모달을 띄운다
-						setFailureModalState(true)
-					}
-				});
+			setPasswordError(() => '');
 		}
-	};
+	},[password])
+
+	useEffect(() => {
+		if (password === '') {
+			setRecheckPasswordError(() => '')
+		} else if (password !== recheckPassword) {
+				setRecheckPasswordError('비밀번호가 일치하지 않습니다');
+			} else if (password === recheckPassword) {
+				setRecheckPasswordError(() => '');
+			}
+	}, [recheckPassword])
+	
 
 	const onEmailSubmit = (e) => {
 		e.preventDefault();
-		if (/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/.test(email) !== true) {
-			setEmailError('올바른 이메일을 입력하세요');
-		}  else {
+		if (emailError === "") {
+			setEmailError(() =>'');
 			axios
 				.post('http://localhost:8080/user/signup', {
-					email: email
+					email: email,
 				})
 				.then((res) => {
 					if (res.status === 201) {
 						console.log(res);
 						//모달을 띄운다
-						setSucessModalState(true)
+						setSucessModalState(true);
 					}
 				})
 				.catch((res) => {
 					if (res.status === 409) {
 						//모달을 띄운다
-						setFailureModalState(true)
+						setFailureModalState(true);
 					}
 				});
+		} else {
+			setEmailError('이메일을 확인하세요');
 		}
 	};
 
 	const onSubmit = (e) => {
-		if (email && username && password && recheckPassword && sucessModalState && password === recheckPassword) {
-			e.preventDefault();
-			axios
-				.post('http://localhost:8080/user/signup', {
-					email: email,
-					username: username,
-					password: password,
-				})
-				.then((res) => {
-					if (res.status === 201) {
-						console.log(res);
-					}
-				})
-				.catch((err) => {
-					console.log(err)
-				});
-		} else {
-			alert("입력값을 확인하세요")
-		}
+		e.preventDefault();
+		axios
+			.post('http://localhost:8080/user/signup', {
+				email: email,
+				username: username,
+				password: password,
+			})
+			.then((res) => {
+				if (res.status === 201) {
+					console.log(res);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+
 		setEmail('');
 		setPassword('');
 		setUsername('');
 	};
 	return (
 		<>
-			<section>
+			
+			<section className="signup-box">
+			<span className="line-or-signup">
+					<span className="txt-or-signup">▼ 아직 계정이 없으신가요? ▼</span>
+				</span>
+				<div className="inp-signup">
 				<div className="signup-user">
-					<p>username:</p>
-					<input type="username" placeholder="이름을 입력해주세요" onChange={usernameValidation} value={username}></input>
-					<div>{usernameError}</div>
-					<button type="submit" onClick={onUserNameSubmit}>중복확인</button>
+					<input className="signup-txt" type="text" placeholder="User Name" onChange={usernameValidation} value={username}></input>
 				</div>
 				<div className="signup-email">
-					<p>email:</p>
-					<input type="email" placeholder="이메일을 입력 해주세요" onChange={emailValidation} value={email}></input>
-					<div>{emailError}</div>
-					<button type="submit" onClick={onEmailSubmit}>중복확인</button>
+					<div>
+					  
+					  <input className="signup-txt-email" type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}></input>
+						
+					</div>
+					<p className="err-txt">{emailError}</p>
+					<div>
+					  <button className="recheck-btn" type="submit" onClick={onEmailSubmit}>
+							중복확인
+					  </button>
+					</div>
 				</div>
 				<div className="signup-password">
-					<p>password:</p>
-					<input type="password" placeholder="비밀번호를 입력 해주세요" onChange={passwordValidation} value={password}></input>
-					<div>{passwordError}</div>
+					
+					<input className="signup-txt" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+	
+						<p className="err-txt">{passwordError}</p>
 				</div>
 				<div className="signup-pw-recheck">
-					<p>password 재확인:</p>
-					<input type="password" placeholder="비밀번호를 입력 해주세요" onChange={passwordReValidation} value={recheckPassword}></input>
-					<div>{recheckPasswordError}</div>
-				</div>
-				<button type="submit" onClick={onSubmit}>회원가입</button>
+					
+					<input className="signup-txt" type="password" placeholder="Password 재확인" onChange={(e) => setRecheckPassword(e.target.value)} value={recheckPassword}></input>
+					
+					<p className="err-txt">{recheckPasswordError}</p>
+					</div>
+					<button className="signup-btn" type="submit" onClick={onSubmit}>
+					회원가입
+				</button>
+					</div>
+				
 			</section>
 			<SucessModal sucessModalState={sucessModalState} />
 			<FailureModal failureModalState={failureModalState} />

@@ -5,11 +5,15 @@ import axios from 'axios';
 import StoryChart from './StoryChart';
 import UserInfo from '../UserInfo/UserInfo';
 import ReadingStory from '../ReadingPage/ReadingStory';
+import WritingPage from '../WritingPage/WritingPage';
 import { Route } from 'react-router-dom';
 import Text from './Text';
-export default function Main({ match }) {
+import Footer from './Footer';
+
+export default function Main({ history, match, session }) {
 	const [data, setData] = useState(null);
 	const [modalToggle, setModalToggle] = useState({ display: 'none' });
+	const [count, setCount] = useState(0);
 	const modalToggleHandler = () => {
 		if (modalToggle.display === 'none') {
 			setModalToggle({ display: 'flex' });
@@ -17,56 +21,102 @@ export default function Main({ match }) {
 			setModalToggle({ display: 'none' });
 		}
 	};
+	const countIncrease = () => {
+		setCount(
+			data.reduce((acc, cur) => {
+				if (cur.id > acc) {
+					return acc;
+				}
+				return cur;
+			}).id + 1
+		);
+	};
 	const modalOff = () => {
 		setModalToggle({ display: 'none' });
 	};
-
+	// console.log(data);
 	useEffect(() => {
-		axios.get('https://jsonplaceholder.typicode.com/comments/').then((res) => setData([...res.data.slice()]));
-	}, []);
+		axios.get('http://localhost:8080/post/lists').then((res) => setData(res.data.posts));
+	}, [count]);
 
-	if (match.url === '/main') {
-		return (
-			data && (
+	if (data) {
+		if (match.url === '/main') {
+			return (
 				<div className="wrapper">
-					<Nav modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+					<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
 					<Text userData={data} modalToggle={modalToggle} modalOff={modalOff} />
-					<StoryChart userData={data} match={match.params} />
+					<StoryChart userData={data} match={match.params} modalOff={modalOff} />
+					<Footer />
 				</div>
-			)
-		);
-	} else if (match.url === '/main/userInfo') {
-		return (
-			<Route
-				path="/main/userInfo"
-				exact
-				render={({ history }) => {
-					return (
-						<>
-							<Nav history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
-							<UserInfo modalOff={modalOff} userData={data} />
-						</>
-					);
-				}}
-			/>
-		);
-	} else if (Array.isArray(data) && Number(match.params.id) <= data.length) {
-		return (
-			<Route
-				path={`/main/${data.filter((el) => el.id === Number(match.params.id) && el.id)[0].id}`}
-				exact
-				render={({ history }) => {
-					return (
-						<>
-							<Nav history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
-							<ReadingStory userData={data} modalOff={modalOff} match={match} />
-						</>
-					);
-				}}
-			/>
-		);
-	} else if (Array.isArray(data) && Number(match.params.id) > data.length + 1) {
-		return <div>404</div>;
+			);
+		} else if (match.url === '/main/userInfo') {
+			return (
+				<Route
+					path="/main/userInfo"
+					exact
+					render={({ history }) => {
+						return (
+							<>
+								<Nav match={match} history={history} modalOff={modalOff} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
+								<UserInfo modalOff={modalOff} userData={data} />
+								<Footer />
+							</>
+						);
+					}}
+				/>
+			);
+		} else if (match.url === '/write') {
+			return (
+				<Route
+					path="/write"
+					exact
+					render={({ history, match }) => {
+						return (
+							<>
+								<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+								<WritingPage count={count} countIncrease={countIncrease} history={history} />
+							</>
+						);
+					}}
+				/>
+			);
+		} else if (
+			Number(match.params.id) <=
+			data.reduce((acc, cur) => {
+				if (cur.id > acc) {
+					return acc;
+				}
+				return cur;
+			}).id
+		) {
+			return (
+				<Route
+					path={`/main/${data.filter((el) => el.id === Number(match.params.id))[0].id}`}
+					exact
+					render={({ history }) => {
+						return (
+							<>
+								<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+								<ReadingStory history={history} count={count} countIncrease={countIncrease} userData={data} modalOff={modalOff} match={match} />
+							</>
+						);
+					}}
+				/>
+			);
+		} else if (
+			Array.isArray(data) &&
+			Number(match.params.id) >
+				data.reduce((acc, cur) => {
+					if (cur.id > acc) {
+						return acc;
+					}
+					return cur;
+				}).id +
+					1
+		) {
+			return <div className="loading"></div>;
+		}
 	}
-	return <div className="loading"></div>;
+
+	return <div></div>;
 }

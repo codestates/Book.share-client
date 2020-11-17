@@ -1,19 +1,57 @@
-.storyChart {
-	border: 1px solid rgb(212, 212, 223);
-	width: auto;
-	height: auto;
+.storyChartWrapper {
+	/* border: 1px solid blue; */
+	display: flex;
+	justify-content: center;
 }
+.storyChart {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	width: 40%;
+	height: auto;
+	position: relative;
+	/* transform: translateX(300px); */
+	left: -20%;
+	/* animation: chart 3s ease both; */
+}
+/* @keyframes chart {
+	from {
+		transform: translateX(300px);
+	}
+	to {
+		left: -40%;
+	} */
+/* } */
 .chartList {
 	border: 1px solid rgb(138, 138, 151);
+	margin-bottom: 70px;
+	padding: 10px 0;
+	border-radius: 15px;
+	background-color: rgb(255, 255, 255);
+	opacity: 0.9;
+	transition: all 1s;
+	box-shadow: 40px 40px 5px rgb(115, 115, 120);
+}
+.chartList:hover {
+	transform: scale(1.1) translateX(230px);
+
+	box-shadow: 3px 3px 3px rgb(96, 95, 94);
+	/* opacity: 0.6; */
 }
 .text {
+	color: rgb(225, 210, 210);
 	text-align: center;
 	height: 300px;
+	padding: 150px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	/* border: 1px solid black; */
 }
 a {
 	text-decoration: none;
 	color: black;
 }
+
 .loading {
 	/* border: 1px solid blue; */
 	position: absolute;
@@ -22,4 +60,72 @@ a {
 	width: 200px;
 	height: 200px;
 	background: url('../Spinner-1s-200px.gif');
+}
+.storyChart_title {
+	/* border: 1px solid rgb(138, 138, 151); */
+	font-size: 25px;
+	padding: 0 10px;
+	margin: 0 0 10px 20px;
+	color: rgb(16, 15, 14);
+	font-family: Geneva, Verdana, sans-serif;
+}
+.slideRight {
+	position: absolute;
+	right: 50%;
+	z-index: 9999;
+	transform: translateX(-360px);
+	font-size: 100px;
+	color: rgb(232, 229, 235);
+	cursor: pointer;
+	user-select: none;
+}
+.slideLeft {
+	left: 50%;
+	position: absolute;
+	z-index: 9999;
+	transform: translateX(315px);
+	font-size: 100px;
+	color: rgb(232, 229, 235);
+	cursor: pointer;
+	user-select: none;
+}
+.storyChart_title:hover {
+	color: rgb(109, 96, 96);
+}
+.storyChart_body {
+	/* border: 1px solid rgb(138, 138, 151); */
+	border-top: 1px solid rgb(160, 160, 174);
+	font-size: 23px;
+	font-weight: 100;
+	margin-left: 20px;
+	padding: 10px;
+	height: 150px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	transition: all 1s;
+	opacity: 0.6;
+}
+.storyChart_body:hover {
+	font-size: 28px;
+	text-decoration: underline;
+	color: rgb(21, 13, 13);
+}
+.storyChart_username {
+	/* border: 1px solid rgb(138, 138, 151); */
+	padding: 0 10px;
+	font-size: 15px;
+	font-weight: 100;
+	color: rgb(154, 156, 159);
+}
+.svg-inline--fa {
+	margin-right: 13px;
+	color: rgb(69, 63, 75);
+}
+.slideWrapper {
+	width: 550px;
+	position: relative;
+	left: -5%;
+	/* transform: translateX(-205px); */
+}
+.slideWrapper:first-child {
+	text-align: center;
 }
