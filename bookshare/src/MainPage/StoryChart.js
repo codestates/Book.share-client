@@ -13,7 +13,7 @@ export default function StoryChart({ match, userData, modalOff }) {
 								{
 									<>
 										<div className="storyChart_title">{data.title}</div>
-										<div className="storyChart_body">{data.body.split(' ').slice(0, 20).join(' ')}</div>
+										<div className="storyChart_body">{data.body.split(' ').slice(0, 20).join(' ')}...</div>
 										<div className="storyChart_username">
 											<FontAwesomeIcon icon={faUser} size="1x" />
 											{data.title}
