@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export default function Modal({ match, modalOff }) {
-	const [userEmail, setUserEmail] = useState('');
+	const [userEmail, setUserEmail] = useState('로그인을 해주세요');
 	useEffect(() => {
 		axios.get(`http://localhost:8080/user/info`).then((res) => setUserEmail(res.data.email));
 	}, []);
@@ -17,7 +17,7 @@ export default function Modal({ match, modalOff }) {
 			<div className="userInfo">
 				<span className="userEmail">{userEmail}</span>
 				<button className="userInfoBtn" onClick={modalOff}>
-					<Link to={'/main/userInfo'}>userInfo</Link>
+					{userEmail === '로그인을 해주세요' ? <Link to={'/'}>login</Link> : <Link to={'/main/userInfo'}>userInfo</Link>}
 				</button>
 			</div>
 			<div className="logout">

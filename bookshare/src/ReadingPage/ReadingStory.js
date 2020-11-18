@@ -4,32 +4,26 @@ import { Link } from 'react-router-dom';
 import './ReadingPage.css';
 import Comment from './Comment';
 
-export default function ReadingStory({ match, modalOff, userData }) {
-	console.log(userData);
+export default function ReadingStory({ title, match, modalOff, userData }) {
 	const ref = useRef(null);
 
-	console.log(match.params.id);
 	const [userInfo, setUserInfo] = useState(null);
 	useEffect(() => {
-		axios.get('http://localhost:8080/post/lists').then((res) => {
+		console.log(`title`, title);
+		axios.get(`http://localhost:8080/post/${title}`).then((res) => {
 			console.log(res);
-			setUserInfo(
-				res.data.posts.filter((data) => {
-					if (String(data.id) === match.params.id) {
-						return data;
-					}
-				})[0]
-			);
+			setUserInfo(Object.assign({}, res.data));
 		});
 	}, []);
 	const iframeHandler = (e) => {
-		e.target.contentWindow.document.body.style.fontSize = '24px';
-		e.target.contentWindow.document.body.style.fontWeight = '300';
+		e.target.contentWindow.document.body.style.fontSize = '20px';
+		e.target.contentWindow.document.body.style.fontWeight = '100';
 		e.target.contentWindow.document.body.style.color = '#343a40';
 		e.target.contentWindow.document.body.style.fontFamily = 'Segoe UI';
-		e.target.contentWindow.document.body.style.lineHeight = '70px';
+		e.target.contentWindow.document.body.style.lineHeight = '40px';
 		e.target.contentWindow.document.body.style.textDecoration = 'underline #ced4da';
 		e.target.contentWindow.document.body.style.opacity = '0.5';
+		e.target.contentWindow.document.body.style.marginLeft = '50px';
 	};
 
 	console.log(userInfo);
@@ -47,10 +41,10 @@ export default function ReadingStory({ match, modalOff, userData }) {
 							frameBorder="0"
 							onLoad={iframeHandler}
 							ref={ref}
-							style={{ transform: 'scale(1.2)' }}
+							style={{ transform: 'scale(1.1)' }}
 							srcDoc={userInfo.article}
 							className="showtext"
-							width={860}
+							width={650}
 							height={1400}
 							scrolling="no"
 						></iframe>
