@@ -32,9 +32,6 @@ export default function WritingPage({ count, countIncrease, history }) {
 				article: data,
 				id: count,
 			})
-			.then((res) => {
-				history.push(`/main/userInfo`);
-			})
 			.catch((err) => console.log(err));
 	};
 
