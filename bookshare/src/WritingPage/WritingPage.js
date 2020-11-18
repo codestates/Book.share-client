@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import Nav from './WritingNav';
 import StoryBody from './StoryBody';
 import axios from 'axios';
+import './WritingPage.css'
 
 export default function WritingPage({ count, countIncrease, history }) {
-	const [data, setData] = useState('');
+	const [editorHtml, setData] = useState('');
 	const [title, setTitle] = useState('');
 
-	const handleStoryChange = (event, editor) => {
-		const data = editor.getData();
-
-		setData(data);
+	const handleStoryChange = (html) => {
+		setData(html);
 	};
 	console.log(count);
+
 	const handleTitleChange = (e) => {
 		e.preventDefault();
 
@@ -29,18 +28,18 @@ export default function WritingPage({ count, countIncrease, history }) {
 		axios
 			.post('http://localhost:8080/post/push', {
 				title: title,
-				article: data,
-				id: count,
+				article: editorHtml,
+				id: 1,
 			})
 			.then((res) => {
-				history.push(`/main/userInfo`);
+				console.log(res)
 			})
 			.catch((err) => console.log(err));
 	};
 
 	return (
 		<>
-			<StoryBody handleStoryChange={handleStoryChange} handleTitleChange={handleTitleChange} handleCancleClick={handleCancleClick} handleSubmitClick={handleSubmitClick} data={data} title={title} />
+			<StoryBody handleStoryChange={handleStoryChange} handleTitleChange={handleTitleChange} handleCancleClick={handleCancleClick} handleSubmitClick={handleSubmitClick} editorHtml={editorHtml} title={title} />
 		</>
 	);
 }
