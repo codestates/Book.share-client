@@ -81,25 +81,22 @@ function Signup() {
 	};
 
 	const onSubmit = (e) => {
-		if (email && username && password && recheckPassword && sucessModalState && password === recheckPassword) {
-			e.preventDefault();
-			axios
-				.post('http://localhost:8080/user/signup', {
-					email: email,
-					username: username,
-					password: password,
-				})
-				.then((res) => {
-					if (res.status === 201) {
-						console.log(res);
-					}
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		} else {
-			alert('입력값을 확인하세요');
-		}
+		e.preventDefault();
+		axios
+			.post('http://localhost:8080/user/signup', {
+				email: email,
+				username: username,
+				password: password,
+			})
+			.then((res) => {
+				if (res.status === 201) {
+					console.log(res);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+
 		setEmail('');
 		setPassword('');
 		setUsername('');

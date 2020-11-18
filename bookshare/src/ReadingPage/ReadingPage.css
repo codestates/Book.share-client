@@ -1,29 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
 .readingPageWrapper {
 	width: 100%;
 }
 .textHeader {
+	margin-top: 200px;
 	width: 100%;
-	border: 1px solid blue;
+	font-size: 40px;
+	font-weight: 100;
+	/* border: 1px solid blue; */
 	margin-bottom: 50px;
 	display: flex;
-	text-align: center;
+	justify-content: center;
 }
 .title {
-	margin-left: 30px;
+	/* margin-left: 200px; */
+	font-weight: bold;
+	transform: translate(-200px, -50px);
 }
 .date {
-	margin-left: 30px;
+	/* margin-left: 250px; */
+	transform: translate(250px, -150px);
 }
+
 .textBody {
-	width: 100%;
-	border: 1px solid blue;
-	margin-bottom: 50px;
+	width: 60%;
+	/* border: 1px solid rgb(196, 196, 215); */
+	background-color: rgba(212, 228, 213, 0.29);
+	/* margin: 205px; */
 	text-align: center;
+	height: 700px;
+	border-radius: 20px;
+	transform: translate(180px, 50px);
+	padding-top: 130px;
+
+	/* opacity: 0.5; */
+}
+#textBody {
+	width: 65%;
+	position: absolute;
+	/* border: 1px solid rgb(196, 196, 215); */
+	background-color: rgb(249, 246, 246);
+	transform: translate(170px, -30px);
+	text-align: center;
+	height: 900px;
+	box-shadow: 55px -30px 10px rgb(84, 84, 87);
+	opacity: 0.5;
+	margin-bottom: 130px;
 }
 
 .commnetWrapper {
 	width: 100%;
-	border: 1px solid blue;
+	border: 1px solid #cacad6;
 	text-align: center;
 }
 .textTag {

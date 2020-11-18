@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-export default function Nav({ history, match }) {
+export default function Nav({ countIncrease, history, match }) {
+	console.log(countIncrease);
 	const [modalToggle, setModalToggle] = useState({ display: 'none' });
 	const modalToggleHandler = () => {
 		if (modalToggle.display === 'none') {
@@ -26,4 +27,4 @@ export default function Nav({ history, match }) {
 			</div>
 		</>
 	);
-} 
+}

@@ -1,5 +1,7 @@
 .userInfoWrapper {
 	/* border: 1px solid rgb(28, 28, 233); */
+	margin-left: 25%;
+	width: 50%;
 }
 .userInfoText {
 	height: 100px;

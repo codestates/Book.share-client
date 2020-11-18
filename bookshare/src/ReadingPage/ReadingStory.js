@@ -1,39 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './ReadingPage.css';
 import Comment from './Comment';
 
-export default function ReadingStory({ match, modalOff, userData }) {
-	console.log(userData);
-	console.log(match.params.id);
+export default function ReadingStory({ title, match, modalOff, userData }) {
+	const ref = useRef(null);
+
 	const [userInfo, setUserInfo] = useState(null);
 	useEffect(() => {
-		axios.get('https://jsonplaceholder.typicode.com/comments/').then((res) => {
-			setUserInfo(
-				res.data.filter((data) => {
-					if (String(data.id) === match.params.id) {
-						return data;
-					}
-				})[0]
-			);
+		console.log(`title`, title);
+		axios.get(`http://localhost:8080/post/${title}`).then((res) => {
+			console.log(res);
+			setUserInfo(Object.assign({}, res.data));
 		});
 	}, []);
+	const iframeHandler = (e) => {
+		e.target.contentWindow.document.body.style.fontSize = '20px';
+		e.target.contentWindow.document.body.style.fontWeight = '100';
+		e.target.contentWindow.document.body.style.color = '#343a40';
+		e.target.contentWindow.document.body.style.fontFamily = 'Segoe UI';
+		e.target.contentWindow.document.body.style.lineHeight = '40px';
+		e.target.contentWindow.document.body.style.textDecoration = 'underline #ced4da';
+		e.target.contentWindow.document.body.style.opacity = '0.5';
+		e.target.contentWindow.document.body.style.marginLeft = '50px';
+	};
+
 	console.log(userInfo);
 	return (
 		userInfo && (
 			<>
 				<div className="readingPageWrapper" onClick={modalOff}>
 					<div className="textHeader">
-						<div className="title">title: {userInfo.name}</div>
-						<div className="date">date: {Date()}</div>
+						<div className="title">{userInfo.title}</div>
+						<div className="date">{Date().substring(0, 25)}</div>
 					</div>
+					<div className="textBody" id="textBody"></div>
 					<div className="textBody">
-						body
-						<div className="showtext">body: {userInfo.body}</div>
-						<div className="textTag">tag: {userInfo.email}</div>
+						<iframe
+							frameBorder="0"
+							onLoad={iframeHandler}
+							ref={ref}
+							style={{ transform: 'scale(1.1)' }}
+							srcDoc={userInfo.article}
+							className="showtext"
+							width={650}
+							height={1400}
+							scrolling="no"
+						></iframe>
+						{/* <div className="textTag">tag: {}</div> */}
 					</div>
-					<Comment />
+					{/* <Comment /> */}
 				</div>
 			</>
 		)

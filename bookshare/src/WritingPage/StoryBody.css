@@ -1,14 +1,113 @@
 .story-container {
-	width: 80%;
+  width: 850px;
+  height: 500px;
+  top: 5%;
+  position: relative;
+  margin: 0 0 0 450px;
 }
 .story-title {
-	width: 100%;
+  width: 850px;
+  justify-content: center;
 }
 
 .title-input {
-	position: relative;
-	width: auto;
+  position: relative;
+  width: 100%;
+  content: "제목을 입력하세요";
+  font-size: 30pt;
+  font-family: "Nanum Myeongjo";
+  cursor: text;
+  color: rgb(160, 158, 158);
+  opacity: 0.5;
+  border: none;
+  outline: 0 none;
+  line-height: 40px;
 }
-.CKEditor {
-	width: 100%;
+
+.wrap-body {
+  width: 850px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 120px;
+}
+
+.story-line-or-signup {
+  top: 3%;
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.story-line-or-signup:before {
+  display: inline-block;
+  width: calc(100%);
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.226);
+  vertical-align: top;
+  content: "";
+}
+
+.quill {
+  top: 1%;
+  position: relative;
+  display: block;
+  border: none;
+  outline: 0 none;
+  width: 850px;
+  min-height: 300px;
+}
+
+.ql-container {
+  min-height: 300px;
+}
+
+.content-aside {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 66px;
+  background-color: #f5f5f5;
+  z-index: 1;
+  overflow: hidden;
+  min-width: 944px;
+  text-align: right;
+}
+
+.story-btn-sub {
+  height: 40px;
+  border: 1px solid #d0d0d0;
+  background: black;
+  border-radius: 20px;
+  width: 122px;
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 4px;
+  line-height: 38px;
+  color: white;
+  cursor: pointer;
+}
+.story-btn-can {
+  height: 40px;
+  border: 1px solid #d0d0d0;
+  border-radius: 20px;
+  width: 122px;
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 4px;
+  line-height: 38px;
+  color: red;
+  cursor: pointer;
+}
+
+.story-btn-sub:hover {
+  background-color: rgba(235, 45, 23, 0.712);
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.wrap-story-btn {
+  float: right;
+  padding: 13px 54px 0 0;
 }
