@@ -12,7 +12,7 @@ export default function WritingPage({ count, countIncrease, history }) {
 
 		setData(data);
 	};
-
+	console.log(count);
 	const handleTitleChange = (e) => {
 		e.preventDefault();
 
@@ -25,6 +25,7 @@ export default function WritingPage({ count, countIncrease, history }) {
 	};
 	const handleSubmitClick = () => {
 		countIncrease();
+		console.log(count);
 		axios
 			.post('http://localhost:8080/post/push', {
 				title: title,
@@ -32,9 +33,7 @@ export default function WritingPage({ count, countIncrease, history }) {
 				id: count,
 			})
 			.then((res) => {
-				console.log(res);
-
-				history.push(`/main`);
+				history.push(`/main/userInfo`);
 			})
 			.catch((err) => console.log(err));
 	};

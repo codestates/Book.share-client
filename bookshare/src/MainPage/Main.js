@@ -22,18 +22,21 @@ export default function Main({ history, match, session }) {
 		}
 	};
 	const countIncrease = () => {
-		setCount(count + 1);
+		setCount(
+			data.reduce((acc, cur) => {
+				if (cur.id > acc) {
+					return acc;
+				}
+				return cur;
+			}).id + 1
+		);
 	};
 	const modalOff = () => {
 		setModalToggle({ display: 'none' });
 	};
-	console.log(count);
+	// console.log(data);
 	useEffect(() => {
 		axios.get('http://localhost:8080/post/lists').then((res) => setData(res.data.posts));
-		if (data) {
-			console.log(data);
-			setCount(data.length);
-		}
 	}, [count]);
 
 	if (data) {
@@ -77,30 +80,43 @@ export default function Main({ history, match, session }) {
 					}}
 				/>
 			);
-		} else if (Array.isArray(data) && Number(match.params.id) <= data.length) {
+		} else if (
+			Number(match.params.id) <=
+			data.reduce((acc, cur) => {
+				if (cur.id > acc) {
+					return acc;
+				}
+				return cur;
+			}).id
+		) {
 			return (
 				<Route
-					path={`/main/${data.filter((el) => el.id === Number(match.params.id) && el.id)[0].id}`}
+					path={`/main/${data.filter((el) => el.id === Number(match.params.id))[0].id}`}
 					exact
 					render={({ history }) => {
 						return (
 							<>
 								<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
-								<ReadingStory userData={data} modalOff={modalOff} match={match} />
+								<ReadingStory history={history} count={count} countIncrease={countIncrease} userData={data} modalOff={modalOff} match={match} />
 							</>
 						);
 					}}
 				/>
 			);
-		} else if (Array.isArray(data) && Number(match.params.id) > data.length + 1) {
+		} else if (
+			Array.isArray(data) &&
+			Number(match.params.id) >
+				data.reduce((acc, cur) => {
+					if (cur.id > acc) {
+						return acc;
+					}
+					return cur;
+				}).id +
+					1
+		) {
 			return <div className="loading"></div>;
 		}
 	}
 
-	return (
-		<>
-			<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
-			<div className="loading"></div>;
-		</>
-	);
+	return <div></div>;
 }

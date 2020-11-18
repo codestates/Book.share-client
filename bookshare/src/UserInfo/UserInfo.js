@@ -87,7 +87,7 @@ export default function UserInfo({ history, match, modalOff }) {
 					</button>
 				</div>
 			</div>
-			<div className="leaveMember">탈퇴</div>
+			{/* <div className="leaveMember">탈퇴</div> */}
 		</div>
 	);
 }

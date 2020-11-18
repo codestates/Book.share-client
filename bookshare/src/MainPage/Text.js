@@ -9,16 +9,18 @@ export default function Text({ userData, modalOff }) {
 	const minus = () => {
 		setArray([array[4], ...array.slice(0, 4)]);
 	};
-
+	console.log(userData.slice(userData.length - 5, userData.length));
 	return (
 		<div className="text" onClick={modalOff}>
-			{userData.slice(0, 5).map((data, idx) => {
+			{userData.slice(userData.length - 5, userData.length).map((data, idx) => {
 				return (
 					<div style={{ display: array[idx] }} key={data.id}>
 						<div className="slideWrapper">
 							<Link to={`/main/${data.id}`} key={data.id}>
 								<div className="storyChart_title">{data.title}</div>
-								<div className="storyChart_body">{data.article}...</div>
+								<iframe className="storyChart_body" frameBorder="0" scrolling="no" width={500} srcDoc={data.article.split(' ').slice(0, 20).join(' ')}>
+									...
+								</iframe>
 								<div className="storyChart_username"></div>
 							</Link>
 						</div>

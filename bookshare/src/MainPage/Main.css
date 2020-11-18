@@ -1,26 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 .storyChartWrapper {
 	/* border: 1px solid blue; */
 	display: flex;
 	justify-content: center;
 }
 .storyChart {
-	/* border: 1px solid rgb(212, 212, 223); */
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	width: 40%;
 	height: auto;
 	position: relative;
-	transform: translateX(300px);
-	left: 50%;
-	animation: chart 3s ease both;
+	/* transform: translateX(300px); */
+	left: -20%;
+	/* animation: chart 3s ease both; */
 }
-@keyframes chart {
+/* @keyframes chart {
 	from {
 		transform: translateX(300px);
 	}
 	to {
 		left: -40%;
-	}
-}
+	} */
+/* } */
 .chartList {
 	border: 1px solid rgb(138, 138, 151);
 	margin-bottom: 70px;
@@ -38,9 +37,10 @@
 	/* opacity: 0.6; */
 }
 .text {
+	color: rgb(225, 210, 210);
 	text-align: center;
 	height: 300px;
-	margin: 150px 0;
+	padding: 150px 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -65,7 +65,7 @@ a {
 	/* border: 1px solid rgb(138, 138, 151); */
 	font-size: 25px;
 	padding: 0 10px;
-	margin-bottom: 10px;
+	margin: 0 0 10px 20px;
 	color: rgb(16, 15, 14);
 	font-family: Geneva, Verdana, sans-serif;
 }
@@ -73,7 +73,7 @@ a {
 	position: absolute;
 	right: 50%;
 	z-index: 9999;
-	transform: translateX(-250px);
+	transform: translateX(-360px);
 	font-size: 100px;
 	color: rgb(232, 229, 235);
 	cursor: pointer;
@@ -83,7 +83,7 @@ a {
 	left: 50%;
 	position: absolute;
 	z-index: 9999;
-	transform: translateX(215px);
+	transform: translateX(315px);
 	font-size: 100px;
 	color: rgb(232, 229, 235);
 	cursor: pointer;
@@ -94,9 +94,10 @@ a {
 }
 .storyChart_body {
 	/* border: 1px solid rgb(138, 138, 151); */
-	border-top: 1px solid rgb(45, 45, 50);
+	border-top: 1px solid rgb(160, 160, 174);
 	font-size: 23px;
 	font-weight: 100;
+	margin-left: 20px;
 	padding: 10px;
 	height: 150px;
 	font-family: 'Open Sans Condensed', sans-serif;
@@ -120,8 +121,11 @@ a {
 	color: rgb(69, 63, 75);
 }
 .slideWrapper {
-	width: 300px;
+	width: 550px;
 	position: relative;
-	left: 50%;
-	transform: translateX(-165px);
+	left: -5%;
+	/* transform: translateX(-205px); */
+}
+.slideWrapper:first-child {
+	text-align: center;
 }
