@@ -72,7 +72,7 @@ a {
 .slideRight {
 	position: absolute;
 	right: 50%;
-	z-index: 9999;
+	z-index: 99;
 	transform: translateX(-360px);
 	font-size: 100px;
 	color: rgb(232, 229, 235);
@@ -82,7 +82,7 @@ a {
 .slideLeft {
 	left: 50%;
 	position: absolute;
-	z-index: 9999;
+	z-index: 99;
 	transform: translateX(315px);
 	font-size: 100px;
 	color: rgb(232, 229, 235);

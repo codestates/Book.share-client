@@ -7,13 +7,11 @@ export default function UserInfo({ history, match, modalOff }) {
 	const [infoModify, setInfoModify] = useState({
 		id: false,
 		password: false,
-		email: false,
 		currentId: '',
 		currentPassword: '',
 		currentEmail: '',
 		inputId: '',
 		inputPassword: '',
-		inputEmail: '',
 	});
 
 	useEffect(() => {
@@ -24,27 +22,20 @@ export default function UserInfo({ history, match, modalOff }) {
 		});
 	}, [infoModify.currentId, infoModify.currentPassword, infoModify.currentEmail]);
 
-	const infoModifyHandler = (e) => {
+	const infoModifyHandler = async (e) => {
 		if (e.target.className === 'modifyIdBtn') {
-			axios.post('http://localhost:8080/user/changeInfo', {
+			await axios.post('http://localhost:8080/user/changeInfo', {
 				username: infoModify.inputId,
 			});
 			setInfoModify((prev) => {
 				return Object.assign({}, infoModify, { id: !prev.id, inputId: '' });
 			});
 		} else if (e.target.className === 'modifyPasswordBtn') {
-			axios.post('http://localhost:8080/user/changeInfo', {
+			await axios.post('http://localhost:8080/user/changeInfo', {
 				password: infoModify.inputPassword,
 			});
 			setInfoModify((prev) => {
 				return Object.assign({}, infoModify, { password: !prev.password, inputPassword: '' });
-			});
-		} else if (e.target.className === 'modifyEmailBtn') {
-			axios.post('http://localhost:8080/user/changeInfo', {
-				email: infoModify.inputEmail,
-			});
-			setInfoModify((prev) => {
-				return Object.assign({}, infoModify, { email: !prev.email, inputEmail: '' });
 			});
 		}
 	};
@@ -54,8 +45,6 @@ export default function UserInfo({ history, match, modalOff }) {
 			setInfoModify(Object.assign({}, infoModify, { inputId: e.target.value }));
 		} else if (e.target.id === 'inputModifyPassword') {
 			setInfoModify(Object.assign({}, infoModify, { inputPassword: e.target.value }));
-		} else if (e.target.id === 'inputModifyEmail') {
-			setInfoModify(Object.assign({}, infoModify, { inputEmail: e.target.value }));
 		}
 	};
 
@@ -81,10 +70,7 @@ export default function UserInfo({ history, match, modalOff }) {
 				</div>
 				<div className="infoData">
 					<span className="modifyEmail">email :</span>
-					{infoModify.email ? <input id="inputModifyEmail" type="text" onChange={inputModifyChange} value={infoModify.inputEmail} /> : <span className="seenText">{infoModify.currentEmail}</span>}
-					<button className="modifyEmailBtn" onClick={infoModifyHandler}>
-						email 수정
-					</button>
+					<span className="seenText">{infoModify.currentEmail}</span>
 				</div>
 			</div>
 			{/* <div className="leaveMember">탈퇴</div> */}

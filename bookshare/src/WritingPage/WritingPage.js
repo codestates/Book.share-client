@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StoryBody from './StoryBody';
 import axios from 'axios';
-import './WritingPage.css'
+import './WritingPage.css';
 
 export default function WritingPage({ count, countIncrease, history }) {
 	const [editorHtml, setData] = useState('');
@@ -32,14 +32,23 @@ export default function WritingPage({ count, countIncrease, history }) {
 				id: 1,
 			})
 			.then((res) => {
-				console.log(res)
+				if (res) {
+					window.location.reload();
+				}
 			})
 			.catch((err) => console.log(err));
 	};
 
 	return (
 		<>
-			<StoryBody handleStoryChange={handleStoryChange} handleTitleChange={handleTitleChange} handleCancleClick={handleCancleClick} handleSubmitClick={handleSubmitClick} editorHtml={editorHtml} title={title} />
+			<StoryBody
+				handleStoryChange={handleStoryChange}
+				handleTitleChange={handleTitleChange}
+				handleCancleClick={handleCancleClick}
+				handleSubmitClick={handleSubmitClick}
+				editorHtml={editorHtml}
+				title={title}
+			/>
 		</>
 	);
 }

@@ -6,14 +6,19 @@ import StoryChart from './StoryChart';
 import UserInfo from '../UserInfo/UserInfo';
 import ReadingStory from '../ReadingPage/ReadingStory';
 import WritingPage from '../WritingPage/WritingPage';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Text from './Text';
 import Footer from './Footer';
 
 export default function Main({ history, match, session }) {
+	const [cookie, setCookie] = useState(null);
 	const [data, setData] = useState(null);
 	const [modalToggle, setModalToggle] = useState({ display: 'none' });
 	const [count, setCount] = useState(0);
+	const [title, setTitle] = useState('');
+	const titleChecker = (title) => {
+		setTitle(title);
+	};
 	const modalToggleHandler = () => {
 		if (modalToggle.display === 'none') {
 			setModalToggle({ display: 'flex' });
@@ -34,18 +39,20 @@ export default function Main({ history, match, session }) {
 	const modalOff = () => {
 		setModalToggle({ display: 'none' });
 	};
-	// console.log(data);
+
 	useEffect(() => {
+		setCookie(document.cookie.split(';').filter((cookie) => cookie.match('userid='))[0]);
+		// cookie에서 토큰 뽑아오기
 		axios.get('http://localhost:8080/post/lists').then((res) => setData(res.data.posts));
-	}, [count]);
+	}, [title]);
 
 	if (data) {
 		if (match.url === '/main') {
 			return (
 				<div className="wrapper">
-					<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
-					<Text userData={data} modalToggle={modalToggle} modalOff={modalOff} />
-					<StoryChart userData={data} match={match.params} modalOff={modalOff} />
+					<Nav cookie={cookie} match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+					<Text userData={data} titleChecker={titleChecker} modalToggle={modalToggle} modalOff={modalOff} />
+					<StoryChart userData={data} match={match.params} modalOff={modalOff} titleChecker={titleChecker} />
 					<Footer />
 				</div>
 			);
@@ -57,7 +64,7 @@ export default function Main({ history, match, session }) {
 					render={({ history }) => {
 						return (
 							<>
-								<Nav match={match} history={history} modalOff={modalOff} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
+								<Nav cookie={cookie} match={match} history={history} modalOff={modalOff} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} />
 								<UserInfo modalOff={modalOff} userData={data} />
 								<Footer />
 							</>
@@ -73,7 +80,7 @@ export default function Main({ history, match, session }) {
 					render={({ history, match }) => {
 						return (
 							<>
-								<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+								<Nav cookie={cookie} match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
 								<WritingPage count={count} countIncrease={countIncrease} history={history} />
 							</>
 						);
@@ -96,27 +103,15 @@ export default function Main({ history, match, session }) {
 					render={({ history }) => {
 						return (
 							<>
-								<Nav match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
-								<ReadingStory history={history} count={count} countIncrease={countIncrease} userData={data} modalOff={modalOff} match={match} />
+								<Nav cookie={cookie} match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
+								<ReadingStory history={history} count={count} title={title} countIncrease={countIncrease} userData={data} modalOff={modalOff} match={match} />
 							</>
 						);
 					}}
 				/>
 			);
-		} else if (
-			Array.isArray(data) &&
-			Number(match.params.id) >
-				data.reduce((acc, cur) => {
-					if (cur.id > acc) {
-						return acc;
-					}
-					return cur;
-				}).id +
-					1
-		) {
-			return <div className="loading"></div>;
 		}
 	}
 
-	return <div></div>;
+	return <></>;
 }

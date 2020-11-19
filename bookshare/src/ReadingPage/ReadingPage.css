@@ -19,30 +19,30 @@
 }
 .date {
 	/* margin-left: 250px; */
-	transform: translate(300px, -150px);
+	transform: translate(250px, -150px);
 }
 
 .textBody {
-	width: 75%;
+	width: 60%;
 	/* border: 1px solid rgb(196, 196, 215); */
 	background-color: rgba(212, 228, 213, 0.29);
 	/* margin: 205px; */
 	text-align: center;
-	height: 1400px;
+	height: 3000px;
 	border-radius: 20px;
-	transform: translate(50px, 50px);
+	transform: translate(180px, 50px);
 	padding-top: 130px;
 
 	/* opacity: 0.5; */
 }
 #textBody {
-	width: 90%;
+	width: 65%;
 	position: absolute;
 	/* border: 1px solid rgb(196, 196, 215); */
 	background-color: rgb(249, 246, 246);
-	transform: translate(50px, -30px);
+	transform: translate(170px, -30px);
 	text-align: center;
-	height: 1900px;
+	height: 3150px;
 	box-shadow: 55px -30px 10px rgb(84, 84, 87);
 	opacity: 0.5;
 	margin-bottom: 130px;
