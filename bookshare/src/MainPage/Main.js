@@ -44,7 +44,9 @@ export default function Main({ history, match, session }) {
 		setCookie(document.cookie.split(';').filter((cookie) => cookie.match('userid='))[0]);
 		// cookie에서 토큰 뽑아오기
 		axios.get('http://localhost:8080/post/lists').then((res) => setData(res.data.posts));
-	}, []);
+	}, [title]);
+
+
 
 	if (data) {
 		if (match.url === '/main') {

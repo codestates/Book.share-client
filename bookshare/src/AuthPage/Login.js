@@ -22,7 +22,7 @@ function Login({ history, session, sessionHandler }) {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		if (email && password && emailError === '') {
+		if (email && password) {
 			axios
 				.post('http://localhost:8080/user/login', {
 					email: email,
@@ -55,7 +55,7 @@ function Login({ history, session, sessionHandler }) {
 						}}
 						value={email}
 					></input>
-					<div>{emailError}</div>
+					<div className="login-err-txt">{emailError}</div>
 				</div>
 				<div className="box-input">
 					<input
