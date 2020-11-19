@@ -5,7 +5,7 @@ import './Login.css';
 
 axios.defaults.withCredentials = true;
 
-function Login({ history, session, sessionHandler }) {
+function Login({ history }) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [emailError, setEmailError] = useState('');
@@ -30,7 +30,7 @@ function Login({ history, session, sessionHandler }) {
 				})
 				.then((res) => {
 					console.log(res);
-					sessionHandler(res.data);
+
 					history.push(`/main`);
 				})
 				.catch((res) => {

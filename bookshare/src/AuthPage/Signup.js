@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import SucessModal from './SucessModal';
 import FailureModal from './FailureModal';
-import './Signup.css'
+import './Signup.css';
 
 axios.defaults.withCredentials = true;
 
@@ -25,33 +25,33 @@ function Signup() {
 
 	useEffect(() => {
 		if (email === '') {
-			setEmailError(() => '')
+			setEmailError(() => '');
 		} else if (/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/.test(email) !== true) {
 			setEmailError('올바른 이메일을 입력해주세요');
 		} else {
 			setEmailError(() => '');
 		}
-	}, [email])
-	
+	}, [email]);
+
 	useEffect(() => {
 		if (password === '') {
-			setPasswordError(() => '')
+			setPasswordError(() => '');
 		} else if (/(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/.test(password) !== true) {
 			setPasswordError('비밀번호는 숫자, 영문, 특수문자를 포함한 8자 이상이어야 합니다');
 		} else {
 			setPasswordError(() => '');
 		}
-	},[password])
+	}, [password]);
 
 	useEffect(() => {
 		if (password === '') {
-			setRecheckPasswordError(() => '')
+			setRecheckPasswordError(() => '');
 		} else if (password !== recheckPassword) {
-				setRecheckPasswordError('비밀번호가 일치하지 않습니다');
-			} else if (password === recheckPassword) {
-				setRecheckPasswordError(() => '');
-			}
-	}, [recheckPassword])
+			setRecheckPasswordError('비밀번호가 일치하지 않습니다');
+		} else if (password === recheckPassword) {
+			setRecheckPasswordError(() => '');
+		}
+	}, [recheckPassword]);
 	
 	//모닱창 닫는 이벤트
 	const onSucessclick = () => {
@@ -62,9 +62,14 @@ function Signup() {
 		setFailureModalState(false)
 	}
 
+
 	const onEmailSubmit = (e) => {
 		e.preventDefault();
+<<<<<<< HEAD
 		if (emailError === "") {
+=======
+		if (emailError === '') {
+>>>>>>> 0f5349e213b33fb93209b81cac810781f91fe85b
 			setEmailError(() => '');
 			axios
 				.get(`http://localhost:8080/user/emailCheck/${email}`, {
@@ -109,15 +114,16 @@ function Signup() {
 		setEmail('');
 		setPassword('');
 		setUsername('');
+		setRecheckPassword('');
 	};
 	return (
 		<>
-			
 			<section className="signup-box">
-			<span className="line-or-signup">
+				<span className="line-or-signup">
 					<span className="txt-or-signup">▼ 아직 계정이 없으신가요? ▼</span>
 				</span>
 				<div className="inp-signup">
+
 				<div className="signup-user">
 					<input className="signup-txt" type="text" placeholder="User Name" onChange={usernameValidation} value={username}></input>
 				</div>
@@ -131,22 +137,18 @@ function Signup() {
 						<p className="err-txt">{emailError}</p>
 				</div>
 				<div className="signup-password">
-					
 					<input className="signup-txt" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
-	
 						<p className="err-txt">{passwordError}</p>
-				</div>
-				<div className="signup-pw-recheck">
-					
-					<input className="signup-txt" type="password" placeholder="Password 재확인" onChange={(e) => setRecheckPassword(e.target.value)} value={recheckPassword}></input>
-					
-					<p className="err-txt">{recheckPasswordError}</p>
+					</div>
+					<div className="signup-pw-recheck">
+						<input className="signup-txt" type="password" placeholder="Password 재확인" onChange={(e) => setRecheckPassword(e.target.value)} value={recheckPassword}></input>
+
+						<p className="err-txt">{recheckPasswordError}</p>
 					</div>
 					<button className="signup-btn" type="submit" onClick={onSubmit}>
-					회원가입
-				</button>
-					</div>
-				
+						회원가입
+					</button>
+				</div>
 			</section>
 			<SucessModal onSucessclick={onSucessclick} sucessModalState={sucessModalState} />
 			<FailureModal onFailclick={onFailclick} failureModalState={failureModalState} />

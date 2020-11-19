@@ -31,6 +31,7 @@ export default function WritingPage({ data, countIncrease, history }) {
 					history.replace('/main');
 				}
 			})
+
 			.catch((err) => console.log(err));
 	};
 	return (

@@ -1,129 +1,144 @@
 body {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 #root {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 #auth-main {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 input:focus {
-  outline: none; /* 접근성을 위해 크롬에서 만든 정책으로 input창에 생기는 파란 테두리 제거, textarea는 teatarea:focus로 해결하면 됨 */
+	outline: none; /* 접근성을 위해 크롬에서 만든 정책으로 input창에 생기는 파란 테두리 제거, textarea는 teatarea:focus로 해결하면 됨 */
 }
 
 .App {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .tit-bookshare {
-  font-size: 40px;
-  font-weight: 400;
-  font-family: "Nanum Myeongjo", sans-serif;
-  color: #1a1a1a;
-  text-align: left;
+	font-size: 40px;
+	font-weight: 400;
+	font-family: 'Nanum Myeongjo', sans-serif;
+	color: #1a1a1a;
+	text-align: left;
+}
+.move_main {
+	transform: translate(250px, 30px);
+	animation: move_main 1s infinite;
+	cursor: pointer;
+}
+@keyframes move_main {
+	from {
+		opacity: 0.8;
+		color: rgb(109, 109, 98);
+	}
+	to {
+		opacity: 0.2;
+		color: rgb(174, 174, 196);
+	}
 }
 
 .desc-bookshare {
-  font-size: 32px;
-  line-height: 46px;
-  font-family: "Nanum Myeongjo", sans-serif;
-  color: #cacaca;
-  margin-bottom: 0;
+	font-size: 32px;
+	line-height: 46px;
+	font-family: 'Nanum Myeongjo', sans-serif;
+	color: #cacaca;
+	margin-bottom: 0;
 }
 
 .txt-bookshare {
-  color: #dedede;
-  background: 0 0;
+	color: #dedede;
+	background: 0 0;
 }
 
 .intro-bookshare {
-  position: relative;
-  width: 960px;
-  margin: 0 103px 0 103px;
+	position: relative;
+	width: 960px;
+	margin: 0 103px 0 103px;
 }
 
 .sign-bookshare {
-  position: relative;
-  display: block;
-  width: 400px;
-  height: 640px;
-  top: 0;
-  left: 0;
-  right: 198px;
-  margin: 0 200px 0 1150px;
-  padding-top: 20px;
-  border-radius: 5px;
-  background: linear-gradient(rgba(245, 243, 243, 0.959) 45%, white 55%);
-  box-sizing: border-box;
-  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.08);
+	position: relative;
+	display: block;
+	width: 400px;
+	height: 640px;
+	top: 0;
+	left: 0;
+	right: 198px;
+	margin: 0 200px 0 1150px;
+	padding-top: 20px;
+	border-radius: 5px;
+	background: linear-gradient(rgba(245, 243, 243, 0.959) 45%, white 55%);
+	box-sizing: border-box;
+	box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.08);
 }
 
 .login-err-txt {
-  font-size: 10%;
-  color: red;
-  width: 100%;
-  height: 15px;
+	font-size: 10%;
+	color: red;
+	width: 100%;
+	height: 15px;
 }
 
 .ico-bookshare {
-  display: inline-block;
-  vertical-align: top;
-  line-height: 0;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 0;
 }
 /* The Modal (background) */
 .authModal {
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	display: block; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .tit-sign {
-  width: 150px;
-  text-align: center;
-  font-size: 25px;
-  margin: 10px 50px 10px 125px;
-  font-family: "Nanum Myeongjo", sans-serif;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+	width: 150px;
+	text-align: center;
+	font-size: 25px;
+	margin: 10px 50px 10px 125px;
+	font-family: 'Nanum Myeongjo', sans-serif;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.4);
 }
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 25%;
-  text-align: center;
-  font-size: 25px;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 25%;
+	text-align: center;
+	font-size: 25px;
 }
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 /* .bg-img {
