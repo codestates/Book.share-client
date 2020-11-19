@@ -6,15 +6,26 @@ import Comment from './Comment';
 
 export default function ReadingStory({ title, match, modalOff, userData }) {
 	const ref = useRef(null);
-
 	const [userInfo, setUserInfo] = useState(null);
 	useEffect(() => {
+		if (title === '') {
+			setUserInfo(
+				userData.filter((data) => {
+					if (String(data.id) === match.params.id) {
+						return data;
+					}
+				})[0]
+			);
+		}
 		console.log(`title`, title);
 		axios.get(`http://localhost:8080/post/${title}`).then((res) => {
 			console.log(res);
+
 			setUserInfo(Object.assign({}, res.data));
 		});
 	}, []);
+	console.log(userInfo);
+
 	const iframeHandler = (e) => {
 		e.target.contentWindow.document.body.style.fontSize = '20px';
 		e.target.contentWindow.document.body.style.fontWeight = '100';
@@ -26,7 +37,6 @@ export default function ReadingStory({ title, match, modalOff, userData }) {
 		e.target.contentWindow.document.body.style.marginLeft = '50px';
 	};
 
-	console.log(userInfo);
 	return (
 		userInfo && (
 			<>
@@ -45,7 +55,7 @@ export default function ReadingStory({ title, match, modalOff, userData }) {
 							srcDoc={userInfo.article}
 							className="showtext"
 							width={650}
-							height={1400}
+							height={3000}
 							scrolling="no"
 						></iframe>
 						{/* <div className="textTag">tag: {}</div> */}
