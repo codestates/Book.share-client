@@ -81,21 +81,13 @@ export default function Main({ history, match, session }) {
 						return (
 							<>
 								<Nav cookie={cookie} match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
-								<WritingPage count={count} countIncrease={countIncrease} history={history} />
+								<WritingPage data={data} countIncrease={countIncrease} history={history} />
 							</>
 						);
 					}}
 				/>
 			);
-		} else if (
-			Number(match.params.id) <=
-			data.reduce((acc, cur) => {
-				if (cur.id > acc) {
-					return acc;
-				}
-				return cur;
-			}).id
-		) {
+		} else if (Number(match.params.id) <= data[0].id + 1) {
 			return (
 				<Route
 					path={`/main/${data.filter((el) => el.id === Number(match.params.id))[0].id}`}
