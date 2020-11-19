@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Modal({ match, modalOff }) {
 	const [userEmail, setUserEmail] = useState('로그인을 해주세요');
 	useEffect(() => {
-		axios.get(`http://localhost:8080/user/info`).then((res) => setUserEmail(res.data.email));
+		axios.get(`http://localhost:8080/user/info`).then((res) => setUserEmail(res.data.username));
 	}, []);
 
 	const logoutHandler = async () => {
