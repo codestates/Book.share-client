@@ -36,6 +36,7 @@ export default function WritingPage({ count, countIncrease, history }) {
 					window.location.reload();
 				}
 			})
+
 			.catch((err) => console.log(err));
 	};
 
