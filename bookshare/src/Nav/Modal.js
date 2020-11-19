@@ -20,11 +20,13 @@ export default function Modal({ match, modalOff }) {
 					{userEmail === '로그인을 해주세요' ? <Link to={'/'}>login</Link> : <Link to={'/main/userInfo'}>userInfo</Link>}
 				</button>
 			</div>
-			<div className="logout">
-				<button className="logoutBtn" onClick={logoutHandler}>
-					<Link to={'/'}>logout</Link>
-				</button>
-			</div>
+			{userEmail !== '로그인을 해주세요' && (
+				<div className="logout">
+					<button className="logoutBtn" onClick={logoutHandler}>
+						<Link to={'/'}>logout</Link>
+					</button>
+				</div>
+			)}
 		</div>
 	);
 }

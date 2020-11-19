@@ -34,7 +34,6 @@ export default function ReadingStory({ title, match, modalOff, userData }) {
 		e.target.contentWindow.document.body.style.lineHeight = '40px';
 		e.target.contentWindow.document.body.style.textDecoration = 'underline #ced4da';
 		e.target.contentWindow.document.body.style.opacity = '0.5';
-		e.target.contentWindow.document.body.style.marginLeft = '50px';
 	};
 
 	return (

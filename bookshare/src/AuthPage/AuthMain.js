@@ -2,11 +2,15 @@ import React from 'react';
 import Login from './Login';
 import Signup from './Signup';
 import SocialLogin from './SocialLogin';
+import { Link } from 'react-router-dom';
 import './AuthMain.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 export default function AuthMain({ session, sessionHandler }) {
+	const loginFocus = () => {
+		document.querySelector('.signup-txt').focus();
+	};
 	return (
 		<main id="auth-main">
 			<article className="intro-bookshare">
@@ -25,10 +29,14 @@ export default function AuthMain({ session, sessionHandler }) {
 					</span>
 					<span className="txt-bookshare">그리고 공유해 보세요. 당신의 아름다운 작품을.</span>
 				</p>
+
+				<div className="move_main" onClick={loginFocus}>
+					회원가입 하러 가기
+				</div>
 			</article>
 			<section className="sign-bookshare">
 				<p className="tit-sign">Book.share</p>
-				<Login session={session} sessionHandler={sessionHandler} />
+				<Login loginFocus={loginFocus} />
 				<SocialLogin />
 				<Signup />
 			</section>
