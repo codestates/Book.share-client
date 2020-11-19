@@ -1,8 +1,12 @@
 .soci-box {
   position: relative;
   display: inline-flex;
-  top: 1%;
-  left: 1%;
+  top: 14%;
+  left: 33%;
   align-items: center;
   justify-content: center;
+}
+
+.soc-btn {
+  border: none;
 }

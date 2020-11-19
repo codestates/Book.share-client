@@ -1,52 +1,29 @@
 import React, { useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
-// import { GoogleLogin } from "react-google-login";
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import './SocialLogin.css';
-// import axios from "axios";
+import axios from "axios";
 
-function SocialLogin({ history }) {
+function SocialLogin() {
 	//   const [id, setId] = useState("");
 	//   const [name, setName] = useState("");
 	//   const [provider, setProvider] = useState("");
 
-	//   //goole login
-	//   const responseGoogle = (res) => {
-	//     setId(res.googleId)
-	//     setName(res.profileObj.name)
-	//     setProvider("google")
-	//     history.push("/")
-	//   }
+	const handleClick = (() => {
+		axios.get("https://github.com/login/oauth/authorize?scope=user:email&client_id=252f9c77d6c055701950")
+			.then((res) => {
+				console.log(res);
+		})
+	})
 
-	//   const responseFail = (err) => {
-	//     console.log(err)
-	//   }
 	return (
 		<section className="soci-box">
-			{/* //         <a href="https://github.com/login/oauth/authorize?client_id=beacbf44735ab93f03c0&redirect_uri=http://1838bee4edee.ngrok.io/callback">
-
-//           <button type="button" className="git-btn">
-//           <FontAwesomeIcon icon={faCamera} />
-//             Github Login
-//           </button>
-//         </a>
-//       </div>
-//       <div>
-//         &nbsp;
-//         &nbsp;
-//       <GoogleLogin
-//         clientId={process.env.REACT_APP_Google}
-//         buttonText="Google Sign in"
-//         onSuccess={responseGoogle}
-//         onFailure={responseFail}
-//         // isSignedIn={true}    
-//         cookiePolicy={'single_host_origin'}
-//         >
-//       </GoogleLogin>
-      </div>
-    </section> */}
-		</section>
+          <button className="soc-btn" onClick={handleClick} type="button" className="git-btn">
+				<FontAwesomeIcon icon={faGithub} />
+             Github Login
+           </button>
+    </section>
 	);
 }
 
