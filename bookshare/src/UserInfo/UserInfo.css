@@ -1,32 +1,128 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+}
+
 .userInfoWrapper {
-	/* border: 1px solid rgb(28, 28, 233); */
-	margin-left: 25%;
-	width: 50%;
+  /* border: 1px solid rgb(28, 28, 233); */
+  display: block;
+  width: 700px;
+  height: 430px;
+  margin: 0 auto 70px;
+  font-family: "Noto Sans Light", "Malgun Gothic", sans-serif;
 }
 .userInfoText {
-	height: 100px;
-	margin-bottom: 15px;
-	/* border: 1px solid rgb(169, 169, 230); */
+  height: 100px;
+  margin-bottom: 15px;
+  /* border: 1px solid rgb(169, 169, 230); */
 }
 .infoChange {
-	height: 230px;
-	text-align: center;
-	/* border: 1px solid rgb(217, 217, 227); */
+  height: 230px;
+  text-align: center;
+  /* border: 1px solid rgb(217, 217, 227); */
 }
 
 .leaveMember {
-	/* margin-top: 205px; */
-	height: 100px;
-	/* border: 1px solid rgb(74, 74, 80); */
+  /* margin-top: 205px; */
+  height: 100px;
+  /* border: 1px solid rgb(74, 74, 80); */
 }
 .infoData {
-	display: flex;
-	height: 100px;
-	border: 1px solid rgb(70, 70, 156);
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #eee;
 }
 .seenText {
-	position: relative;
-	margin: 0 80px 0 10px;
+  position: relative;
+  margin: 0 80px 0 10px;
+  height: 32px;
+  width: 100%;
+}
+
+.modify-txt,
+.modifyEmail {
+  top: 5%;
+  margin-left: 10px;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  display: block;
+  font-weight: 400;
+  font-size: 15px;
+  color: #333;
+}
+
+.modify-input {
+  top: 16%;
+  width: 100%;
+  position: relative;
+  margin: 0 10px 0 0;
+  text-align: initial;
+  display: inline-block;
+  height: 25px;
+  font-size: 17px;
+  line-height: 32px;
+  color: #959595;
+  vertical-align: top;
+}
+
+.modifyBtn {
+  width: 116px;
+  height: 32px;
+  margin-left: 5px;
+  border: 1px solid #bbb;
+  border-radius: 16px;
+  color: #666;
+  background-color: white;
+  font-size: 13px;
+  line-height: 15px;
+  float: right;
+}
+
+.modi-line-or {
+  top: 10%;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.modi-line-or:before,
+.modi-line-or:after {
+  display: inline-block;
+  width: calc(47.5% - 20px);
+  height: 1px;
+  margin: 8px 0;
+  background-color: rgba(0, 0, 0, 0.384);
+  vertical-align: top;
+  content: "";
+}
+
+.modi-txt-or {
+  display: inline-block;
+  width: 70px;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.637);
 }

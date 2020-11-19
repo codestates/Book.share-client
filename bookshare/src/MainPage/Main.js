@@ -46,6 +46,8 @@ export default function Main({ history, match, session }) {
 		axios.get('http://localhost:8080/post/lists').then((res) => setData(res.data.posts));
 	}, [title]);
 
+
+
 	if (data) {
 		if (match.url === '/main') {
 			return (

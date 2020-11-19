@@ -94,7 +94,13 @@ export default function Footer() {
             {JinTogleState ?
               <ul className="info-list">
                 <p className="link-txt">Role: Back-end</p>
-                <li></li>
+                <li>
+                <a href="https://velog.io/@pjw536" className="link-txt">
+                    <FontAwesomeIcon icon={faBlogger} />
+                  &nbsp;
+                  blog
+                </a>
+                </li>
                 <li>
                 <a href="https://github.com/pjsw5476" className="link-txt">
                     <FontAwesomeIcon icon={faGithub} />

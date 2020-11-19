@@ -52,6 +52,16 @@ function Signup() {
 			setRecheckPasswordError(() => '');
 		}
 	}, [recheckPassword]);
+	
+	//모닱창 닫는 이벤트
+	const onSucessclick = () => {
+		setSucessModalState(false)
+	}
+	//모닱창 닫는 이벤트
+	const onFailclick = () => {
+		setFailureModalState(false)
+	}
+
 
 	const onEmailSubmit = (e) => {
 		e.preventDefault();
@@ -108,23 +118,21 @@ function Signup() {
 					<span className="txt-or-signup">▼ 아직 계정이 없으신가요? ▼</span>
 				</span>
 				<div className="inp-signup">
-					<div className="signup-user">
-						<input className="signup-txt" type="text" placeholder="User Name" onChange={usernameValidation} value={username}></input>
-					</div>
-					<div className="signup-email">
-						<div>
-							<input className="signup-txt-email" type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}></input>
+
+				<div className="signup-user">
+					<input className="signup-txt" type="text" placeholder="User Name" onChange={usernameValidation} value={username}></input>
+				</div>
+				<div className="signup-email">
+					<div className="email-box">
+					  <input className="signup-txt-email" type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}></input>
+					  <button className="recheck-btn" type="submit" onClick={onEmailSubmit}>
+								중복확인
+					  </button>
 						</div>
 						<p className="err-txt">{emailError}</p>
-						<div>
-							<button className="recheck-btn" type="submit" onClick={onEmailSubmit}>
-								중복확인
-							</button>
-						</div>
-					</div>
-					<div className="signup-password">
-						<input className="signup-txt" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
-
+				</div>
+				<div className="signup-password">
+					<input className="signup-txt" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
 						<p className="err-txt">{passwordError}</p>
 					</div>
 					<div className="signup-pw-recheck">
@@ -137,8 +145,8 @@ function Signup() {
 					</button>
 				</div>
 			</section>
-			<SucessModal sucessModalState={sucessModalState} />
-			<FailureModal failureModalState={failureModalState} />
+			<SucessModal onSucessclick={onSucessclick} sucessModalState={sucessModalState} />
+			<FailureModal onFailclick={onFailclick} failureModalState={failureModalState} />
 		</>
 	);
 }

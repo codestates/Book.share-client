@@ -5,7 +5,8 @@ ul {
 }
 
 .footer-container {
-  position: relative;
+  position: relative; /*position fixed 하면 스크롤 내릴때 푸터 고정 됨*/
+  display: block;
   bottom: 0;
   width: 100%;
   margin-top: 50px;
@@ -51,9 +52,11 @@ ul {
   padding: 75px 60px 0 0;
   text-align: left;
   color: white;
+  display: flex;
 }
 
 .click-makerInfo {
+  flex: 25%;
   float: left;
   width: 160px;
   padding-left: 24px;
@@ -65,4 +68,20 @@ ul {
   font-size: 16px;
   color: white;
   line-height: 30px;
+}
+
+@media screen and (max-width: 992px) {
+  .click-makerInfo {
+    flex-direction: column;
+  }
+
+  .info-maker {
+    flex-direction: column;
+    padding: 75px 60px 0 0;
+
+    height: 150px;
+  }
+  .name-maker {
+    margin-top: 10px;
+  }
 }

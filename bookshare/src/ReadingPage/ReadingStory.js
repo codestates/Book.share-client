@@ -6,6 +6,7 @@ import Comment from './Comment';
 
 export default function ReadingStory({ title, match, modalOff, userData }) {
 	const ref = useRef(null);
+
 	const [userInfo, setUserInfo] = useState(null);
 	useEffect(() => {
 		if (title === '') {
@@ -20,7 +21,6 @@ export default function ReadingStory({ title, match, modalOff, userData }) {
 		console.log(`title`, title);
 		axios.get(`http://localhost:8080/post/${title}`).then((res) => {
 			console.log(res);
-
 			setUserInfo(Object.assign({}, res.data));
 		});
 	}, []);

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
 import './Nav.css';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHamburger } from '@fortawesome/free-solid-svg-icons';
 
 export default function Nav({ cookie, history, match, modalToggle, modalToggleHandler, modalOff }) {
 	const [hasCookieHandler, setHasCookieHandler] = useState({ display: 'none' });
@@ -21,9 +23,11 @@ export default function Nav({ cookie, history, match, modalToggle, modalToggleHa
 	console.log(cookie);
 
 	return (
-		<>
-			<div className="logo" onClick={historyHandler}></div>
-			<div className="nav">
+		<div className="nav">
+			<div>
+				<div className="logo" onClick={historyHandler}></div>
+				</div>
+			<div className="btn-nav">
 				{match.url !== '/write' && (
 					<button className="modalEventButton" style={hasCookieHandler} onClick={modalOff}>
 						<Link to={'/write'}>글쓰기</Link>
@@ -38,6 +42,6 @@ export default function Nav({ cookie, history, match, modalToggle, modalToggleHa
 					<Modal modalOff={modalOff} />
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

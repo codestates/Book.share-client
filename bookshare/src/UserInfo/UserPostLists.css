@@ -1,0 +1,75 @@
+.UserStoryChartWrapper {
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: center;
+}
+.UserStoryChart {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 40%;
+  height: auto;
+  position: relative;
+  /* transform: translateX(300px); */
+  left: -20%;
+  /* animation: chart 3s ease both; */
+}
+/* @keyframes chart {
+	from {
+		transform: translateX(300px);
+	}
+	to {
+		left: -40%;
+	} */
+/* } */
+.UserChartList {
+  border: 1px solid rgb(138, 138, 151);
+  margin-bottom: 70px;
+  padding: 10px 0;
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.9;
+  transition: all 1s;
+  box-shadow: 40px 40px 5px rgb(115, 115, 120);
+}
+.UserChartList:hover {
+  transform: scale(1.1) translateX(230px);
+
+  box-shadow: 3px 3px 3px rgb(96, 95, 94);
+  /* opacity: 0.6; */
+}
+
+.UserStoryChart_title {
+  /* border: 1px solid rgb(138, 138, 151); */
+  font-size: 25px;
+  padding: 0 10px;
+  margin: 0 0 10px 20px;
+  color: rgb(16, 15, 14);
+  font-family: Geneva, Verdana, sans-serif;
+}
+
+.UserStoryChart_title:hover {
+  color: rgb(109, 96, 96);
+}
+.UserStoryChart_body {
+  /* border: 1px solid rgb(138, 138, 151); */
+  border-top: 1px solid rgb(160, 160, 174);
+  font-size: 23px;
+  font-weight: 100;
+  margin-left: 20px;
+  padding: 10px;
+  height: 150px;
+  font-family: "Open Sans Condensed", sans-serif;
+  transition: all 1s;
+  opacity: 0.6;
+}
+.UserStoryChart_body:hover {
+  font-size: 28px;
+  text-decoration: underline;
+  color: rgb(21, 13, 13);
+}
+.UserStoryChart_username {
+  /* border: 1px solid rgb(138, 138, 151); */
+  padding: 0 10px;
+  font-size: 15px;
+  font-weight: 100;
+  color: rgb(154, 156, 159);
+}
