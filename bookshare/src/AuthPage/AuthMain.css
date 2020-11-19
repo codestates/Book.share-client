@@ -9,6 +9,7 @@ body {
 }
 
 #auth-main {
+
   width: 100%;
   height: 100%;
 }
@@ -23,14 +24,30 @@ input:focus {
 }
 
 .tit-bookshare {
-  font-size: 40px;
-  font-weight: 400;
-  font-family: "Nanum Myeongjo", sans-serif;
-  color: #1a1a1a;
-  text-align: left;
+	font-size: 40px;
+	font-weight: 400;
+	font-family: 'Nanum Myeongjo', sans-serif;
+	color: #1a1a1a;
+	text-align: left;
+}
+.move_main {
+	transform: translate(250px, 30px);
+	animation: move_main 1s infinite;
+	cursor: pointer;
+}
+@keyframes move_main {
+	from {
+		opacity: 0.8;
+		color: rgb(109, 109, 98);
+	}
+	to {
+		opacity: 0.2;
+		color: rgb(174, 174, 196);
+	}
 }
 
 .desc-bookshare {
+
   font-size: 32px;
   line-height: 46px;
   font-family: "Nanum Myeongjo", sans-serif;
@@ -39,14 +56,14 @@ input:focus {
 }
 
 .txt-bookshare {
-  color: #dedede;
-  background: 0 0;
+	color: #dedede;
+	background: 0 0;
 }
 
 .intro-bookshare {
-  position: relative;
-  width: 960px;
-  margin: 0 103px 0 103px;
+	position: relative;
+	width: 960px;
+	margin: 0 103px 0 103px;
 }
 
 .sign-bookshare {
@@ -73,12 +90,12 @@ input:focus {
 }
 
 .ico-bookshare {
-  display: inline-block;
-  vertical-align: top;
-  line-height: 0;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 0;
 }
 /* The Modal (background) */
-.authModal {
+
   display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -93,15 +110,16 @@ input:focus {
 }
 
 .tit-sign {
-  width: 150px;
-  text-align: center;
-  font-size: 25px;
-  margin: 10px 50px 10px 125px;
-  font-family: "Nanum Myeongjo", sans-serif;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+	width: 150px;
+	text-align: center;
+	font-size: 25px;
+	margin: 10px 50px 10px 125px;
+	font-family: 'Nanum Myeongjo', sans-serif;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.4);
 }
 /* Modal Content */
 .modal-content {
+
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -113,17 +131,17 @@ input:focus {
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 /* .bg-img {

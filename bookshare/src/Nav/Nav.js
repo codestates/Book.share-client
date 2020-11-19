@@ -6,11 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
 
 export default function Nav({ cookie, history, match, modalToggle, modalToggleHandler, modalOff }) {
-	const [hasCookieHandler, setHasCookieHandler] = useState({ display: 'block' });
+	const [hasCookieHandler, setHasCookieHandler] = useState({ display: 'none' });
 	useEffect((e) => {
 		console.log(e);
-		if (!cookie) {
-			setHasCookieHandler({ display: 'none' });
+		if (cookie) {
+			setHasCookieHandler({ display: 'block' });
 		}
 	}, []);
 	const historyHandler = () => {
