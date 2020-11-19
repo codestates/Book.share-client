@@ -31,12 +31,9 @@ export default function WritingPage({ count, countIncrease, history }) {
 				article: editorHtml,
 				id: 1,
 			})
-<<<<<<< HEAD
 			.then((res) => {
 				console.log(res)
 			})
-=======
->>>>>>> 71235710fe0d19f52fd726c9d2cfcf333b6d3f3b
 			.catch((err) => console.log(err));
 	};
 

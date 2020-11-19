@@ -53,6 +53,14 @@ function Signup() {
 			}
 	}, [recheckPassword])
 	
+	//모닱창 닫는 이벤트
+	const onSucessclick = () => {
+		setSucessModalState(false)
+	}
+	//모닱창 닫는 이벤트
+	const onFailclick = () => {
+		setFailureModalState(false)
+	}
 
 	const onEmailSubmit = (e) => {
 		e.preventDefault();
@@ -113,17 +121,13 @@ function Signup() {
 					<input className="signup-txt" type="text" placeholder="User Name" onChange={usernameValidation} value={username}></input>
 				</div>
 				<div className="signup-email">
-					<div>
-					  
+					<div className="email-box">
 					  <input className="signup-txt-email" type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}></input>
-						
-					</div>
-					<p className="err-txt">{emailError}</p>
-					<div>
 					  <button className="recheck-btn" type="submit" onClick={onEmailSubmit}>
-							중복확인
+								중복확인
 					  </button>
-					</div>
+						</div>
+						<p className="err-txt">{emailError}</p>
 				</div>
 				<div className="signup-password">
 					
@@ -143,8 +147,8 @@ function Signup() {
 					</div>
 				
 			</section>
-			<SucessModal sucessModalState={sucessModalState} />
-			<FailureModal failureModalState={failureModalState} />
+			<SucessModal onSucessclick={onSucessclick} sucessModalState={sucessModalState} />
+			<FailureModal onFailclick={onFailclick} failureModalState={failureModalState} />
 		</>
 	);
 }
