@@ -65,11 +65,7 @@ function Signup() {
 
 	const onEmailSubmit = (e) => {
 		e.preventDefault();
-<<<<<<< HEAD
 		if (emailError === "") {
-=======
-		if (emailError === '') {
->>>>>>> 0f5349e213b33fb93209b81cac810781f91fe85b
 			setEmailError(() => '');
 			axios
 				.get(`http://localhost:8080/user/emailCheck/${email}`, {
