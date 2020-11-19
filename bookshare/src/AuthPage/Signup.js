@@ -65,24 +65,25 @@ function Signup() {
 	const onEmailSubmit = (e) => {
 		e.preventDefault();
 		if (emailError === "") {
-			setEmailError(() =>'');
+			setEmailError(() => '');
 			axios
-				.post('http://localhost:8080/user/signup', {
+				.get(`http://localhost:8080/user/emailCheck/${email}`, {
 					email: email,
 				})
 				.then((res) => {
-					if (res.status === 201) {
+					if (res.status === 200) {
 						console.log(res);
 						//모달을 띄운다
 						setSucessModalState(true);
-					}
-				})
-				.catch((res) => {
-					if (res.status === 409) {
-						//모달을 띄운다
+					} else if (res.status === 205) {
+				
 						setFailureModalState(true);
 					}
-				});
+				})
+	
+				// .catch((res) => {
+				// 	console.log(res)
+				// });
 		} else {
 			setEmailError('이메일을 확인하세요');
 		}

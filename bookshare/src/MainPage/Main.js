@@ -9,7 +9,6 @@ import WritingPage from '../WritingPage/WritingPage';
 import { Route, Redirect } from 'react-router-dom';
 import Text from './Text';
 import Footer from './Footer';
-
 export default function Main({ history, match, session }) {
 	const [cookie, setCookie] = useState(null);
 	const [data, setData] = useState(null);
@@ -39,15 +38,11 @@ export default function Main({ history, match, session }) {
 	const modalOff = () => {
 		setModalToggle({ display: 'none' });
 	};
-
 	useEffect(() => {
 		setCookie(document.cookie.split(';').filter((cookie) => cookie.match('userid='))[0]);
 		// cookie에서 토큰 뽑아오기
 		axios.get('http://localhost:8080/post/lists').then((res) => setData(res.data.posts));
 	}, [title]);
-
-
-
 	if (data) {
 		if (match.url === '/main') {
 			return (
@@ -83,21 +78,13 @@ export default function Main({ history, match, session }) {
 						return (
 							<>
 								<Nav cookie={cookie} match={match} history={history} modalToggleHandler={modalToggleHandler} modalToggle={modalToggle} modalOff={modalOff} />
-								<WritingPage count={count} countIncrease={countIncrease} history={history} />
+								<WritingPage data={data} countIncrease={countIncrease} history={history} />
 							</>
 						);
 					}}
 				/>
 			);
-		} else if (
-			Number(match.params.id) <=
-			data.reduce((acc, cur) => {
-				if (cur.id > acc) {
-					return acc;
-				}
-				return cur;
-			}).id
-		) {
+		} else if (Number(match.params.id) <= data[0].id + 1) {
 			return (
 				<Route
 					path={`/main/${data.filter((el) => el.id === Number(match.params.id))[0].id}`}
@@ -114,6 +101,5 @@ export default function Main({ history, match, session }) {
 			);
 		}
 	}
-
 	return <></>;
 }
