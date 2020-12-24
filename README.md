@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/PROJECT-Book.Share-blue?style=for-the-badge) 
 ![](https://img.shields.io/badge/FamasCom-WEB-yellowgreen?style=for-the-badge)
 # 📖Book.Share
-<img src="https://ifh.cc/g/unG08b.png" width="300" height="300">
+<img src="https://ifh.cc/g/unG08b.png" width="300" height="175">
 
 
 누구나 새로운 것을 배울때 느리게 배우기 마련입니다.
