@@ -28,23 +28,16 @@ Book'story가 함께하겠습니다.:)
 
 # 🔨 Architecture
 ### Client-Side Full flow chart
-![](https://postfiles.pstatic.net/MjAyMDEyMThfMSAg/MDAxNjA4MjU4NDg0MTAx.Af7TLgkswPi5UNivyoJmM8MVhmMv0VE659yXqcIdMYYg.3sOmhm7V1urJLN5YwWXfKomukvTcVjB00uXl_7-VaAMg.JPEG.rosic2012/mainflow.jpg?type=w966)
-### Client-Side Community & Login
-![flow chart](https://user-images.githubusercontent.com/66916041/102568129-44935100-4126-11eb-9e99-a048ff4f1060.jpg)
-### Server-Side flow chart
-![](https://ifh.cc/g/gKaefX.jpg)
-### Server System Architecture
-![](https://ifh.cc/g/GUizHP.png)
+![](https://ifh.cc/g/idkzJ0.jpg)
 
 # 🗣️우리를 소개합니다.
-| [유병국](https://github.com/godkor200) | 🏁Backend  |
+| [김하석](https://github.com/haseok2118) | 🚩Frontend  |
 |--------|----------|
-| [김하석](https://github.com/haseok2118) | 🚩Frontend |
-| [곽미라](https://github.com/hanliang38) | 🚩Frontend |
-| [임민주](https://github.com/IMMINJU) | 🚩Frontend |
+| [박진수](https://github.com/pjsw5476) | 🏁Backend |
+| [조수현](https://github.com/ZAELROOT) | 🏁Backend |
+| [최치원](https://github.com/chiione) | 🚩Frontend |
 
 # For project details
-### UI Design
+### [checkout Book.Share Server](https://github.com/codestates/Book.share-server)
 
-
-### [checkout WIKI](https://github.com/codestates/famasCom_client/wiki)
+### [checkout WIKI](https://github.com/codestates/Book.share-client/wiki)
